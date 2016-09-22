@@ -1,0 +1,76 @@
+@mCWidgetHealthStatusSize: 10px;
+@mCWidgetHealthStatusSpace: 10px;
+@mCWidgetHealthAlertsSpace: 15px;
+
+.mCWidgetHealthStatus {
+    display: inline-block;
+    width:@mCWidgetHealthStatusSize;
+
+    &:before {
+        content: '';
+        display: inline-block;
+
+        margin-right: @mCWidgetHealthStatusSize;
+
+        border-radius: 50px;
+        background-color: #CCC;
+        height: @mCWidgetHealthStatusSize;
+        width:@mCWidgetHealthStatusSize;
+    }
+
+    &.mCWidgetHealthStatusSuccess:before {
+        background-color: @color-signal-success;
+    }
+
+    &.mCWidgetHealthStatusFailure:before {
+        background-color: @color-signal-failure;
+    }
+
+    &.mCWidgetHealthStatusInactive:before {
+        background-color: @color-bg-widgets;
+    }
+
+    &.mCWidgetHealthStatusWarning:before {
+        background-color: @color-signal-warning;
+    }
+}
+
+.mCWidgetHealthStatus + .mCWidgetHealthStatus {
+    margin-left: @mCHealthStatusSpace;
+}
+
+
+.mCWidgetHealthLink {
+    cursor: pointer;
+    text-align: right;
+
+    &:hover:before {
+        content: 'Click for more information';
+        margin-right: 20px;
+    }
+
+    &:after {
+        content: '\f105';
+        float: right;
+        font: normal normal normal 14px/1 FontAwesome
+    }
+}
+
+.mCWidgetHealthAlerts {
+    padding: @mCWidgetHealthAlertsSpace;
+    text-align: center;
+
+    &.mCWidgetHealthAlertsFailure {
+        background-color: @color-signal-failure;
+        color: @color-gray-1;
+    }
+
+    &.mCWidgetHealthAlertsWarning {
+        background-color: @color-signal-warning;
+        color: @color-gray-1;
+    }
+
+    &.mCWidgetHealthAlertHidden {
+        display: none;
+    }
+}

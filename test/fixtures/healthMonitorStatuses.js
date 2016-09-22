@@ -1,0 +1,46 @@
+export default [{
+    status: 'online',
+    lastEvent: '2016-09-08T09:08:21.965Z',
+    deviceId: 'test-device-id-1',
+    name: 'name-device-id-1'
+}, {
+    status: 'online',
+    lastEvent: '2016-09-08T09:08:21.965Z',
+    deviceId: 'test-device-id-2',
+    name: 'name-device-id-2'
+}, {
+    status: 'inactive',
+    lastEvent: '2016-09-08T09:08:21.965Z',
+    deviceId: 'test-device-id-3',
+    name: 'name-device-id-3'
+}, {
+    status: 'offline',
+    lastEvent: '2016-09-08T09:08:21.965Z',
+    deviceId: 'test-device-id-4',
+    name: 'name-device-id-4'
+},  {
+    status: 'offline',
+    lastEvent: '2016-09-08T09:08:21.965Z',
+    deviceId: 'test-device-id-7',
+    name: 'name-device-id-7'
+}, {
+    status: 'offline',
+    lastEvent: '2016-09-08T09:08:21.965Z',
+    deviceId: 'test-device-id-7',
+    name: 'name-device-id-7'
+}, {
+    status: 'outage',
+    lastEvent: '2016-09-08T09:08:21.965Z',
+    deviceId: 'test-device-id-5',
+    name: 'name-device-id-5'
+}, {
+    status: 'outage',
+    lastEvent: '2016-09-08T09:08:21.965Z',
+    deviceId: 'test-device-id-6',
+    name: 'name-device-id-6'
+}, {
+    status: 'outage',
+    lastEvent: '2016-09-08T09:08:21.965Z',
+    deviceId: 'test-device-id-7',
+    name: 'name-device-id-7'
+}];

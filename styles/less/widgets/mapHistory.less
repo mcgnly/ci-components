@@ -1,0 +1,86 @@
+@mCHistoryListItemDotSize: 10px;
+@mCHistoryListHeaderSpace: 15px;
+@mCHistoryListItemDescriptionHeight: 80.5px;
+@mCHistoryListItemSpace: 15px;
+@mCHistoryListHeight: 86vh;
+@mCHistoryListLoadingSize: 20px;
+
+.mCHistoryListContainer {
+    border-left: 2px solid @color-gray-6;
+    min-width: 20%;
+}
+
+.mCHistoryListHeader {
+    display: flex;
+    justify-content: space-between;
+    background-color: @color-bg-secondary;
+    padding: @mCHistoryListHeaderSpace;
+}
+
+.mCHistoryList {
+    list-style: none;
+    max-height: @mCHistoryListHeight;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.mCHistoryMap {
+    flex-grow: 2;
+}
+
+.mCHistoryListItem {
+    position: relative;
+    cursor: pointer;
+    margin-left: @mCHistoryListItemSpace;
+
+    .mCHistoryListItemDescription {
+        display: inline-block;
+        width: 80%;
+        height: @mCHistoryListItemDescriptionHeight;
+        vertical-align: middle;
+        overflow: hidden;
+        padding: 10px;
+    }
+
+    &.mCHistoryListLoading {
+        text-align: center;
+        padding: @mCHistoryListLoadingSize;
+    }
+}
+
+.mCHistoryListItem:before {
+    content: ' ';
+    display: inline-block;
+    width: @mCHistoryListItemDotSize;
+    height: @mCHistoryListItemDotSize;
+    margin: @mCHistoryListItemDotSize;
+    border: 2px solid @color-blue-1;
+    border-radius: 100%;
+
+    vertical-align: middle;
+}
+
+.mCHistoryListItem.mCHistoryListLoading:before {
+    display: none;
+}
+
+.mCHistoryListItemSelected:before {
+    background-color: @color-signal-failure;
+    border: 2px solid @color-signal-failure;
+}
+
+.mCHistoryListItem:after {
+    content: ' ';
+    position: absolute;
+    top: 58px;
+    left: 16px;
+    height: @mCHistoryListItemDescriptionHeight + 8.2;
+    width: 2px;
+    background-color: @color-blue-1;
+}
+
+.mCHistoryListItem:last-child:after {
+    display: none;
+}
