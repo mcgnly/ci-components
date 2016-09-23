@@ -4,7 +4,7 @@ import StatusSymbol from './statusSymbol';
 
 export default ({ count, status, onClick }) => {
     return (
-        <tr>
+        <tr className="mCWidgetHealthMonitorRow">
             <td className="mOTableCell mOTableCellWide">
                 <StatusSymbol status={status}/> Devices {status}
             </td>

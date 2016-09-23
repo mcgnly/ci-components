@@ -1,12 +1,12 @@
 import Relayr, { Device } from 'relayr-browser-sdk';
-import { mqttURL } from '../config/urls';
+import { MQTTURL } from '../config/urls';
 
 export default class MqttService {
     constructor({id, meaning, path, onMessage = () => {}}) {
         this.d = new Device({
             id: id
         }, Object.assign({}, Relayr.getConfig(), {
-            endpoint: mqttURL
+            endpoint: MQTTURL
         }));
 
         this.meaning = meaning;

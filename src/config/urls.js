@@ -11,6 +11,6 @@ if (__LOCAL__) {
     apiURL = 'api.relayr.io';
     mqttURL = 'mqtt.relayr.io';
 }
-export const ApiURL = apiURL;
 
+export const ApiURL = apiURL;
 export const MQTTURL = mqttURL;

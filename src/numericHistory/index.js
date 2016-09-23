@@ -30,7 +30,7 @@ export default class NumberHistory  extends React.Component {
     render() {
         const { title } = this.props;
         return (
-            <li className="rBox rUtilityResetListItem mOWidgetBox">
+            <li className="rBox rUtilityResetListItem mOWidgetBox mOFullWidget">
                 <div className="rBoxHeader">
                     {title}
                 </div>

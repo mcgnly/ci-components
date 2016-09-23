@@ -72,6 +72,22 @@ export default [
         ]
     },
     {
+        type: 'healthMonitor',
+        version: '0.1',
+        config: {
+            healthMonitorId: '5f35fc83-3b3b-4540-81cc-647f7de33f0b'
+        },
+        title: 'Health monitor',
+        query: {
+            deviceIds: [
+                'a5022908-370d-4c47-8db5-4b9755fc4ec7'
+            ]
+        },
+        results: [
+            'a5022908-370d-4c47-8db5-4b9755fc4ec7'
+        ]
+    },
+    {
         type: 'NumericHistory',
         version: '0.1',
         config: {
