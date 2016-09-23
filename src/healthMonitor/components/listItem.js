@@ -5,13 +5,13 @@ import StatusSymbol from './statusSymbol';
 export default ({ count, status, onClick }) => {
     return (
         <tr className="mCWidgetHealthMonitorRow">
-            <td className="mOTableCell mOTableCellWide">
+            <td className="rTableCell rTableCellWide">
                 <StatusSymbol status={status}/> Devices {status}
             </td>
-            <td className="mOTableCell mOTableCellCenter">
+            <td className="rTableCell rTableCellCenter">
                 {count} Devices
             </td>
-            <td className="mOTableCell mOTableCellWide mCWidgetHealthLink" onClick={onClick}>
+            <td className="rTableCell rTableCellWide mCWidgetHealthLink" onClick={onClick}>
             </td>
         </tr>
     );

@@ -6,14 +6,14 @@ import StatusAlert from './statusAlert';
 export default ({ statuses, onLinkClick, overAllStatus }) => {
     return (
         <li className="rBox mOWidgetBox mOFullWidget">
-            <table className="mOTable">
-                <thead className="mOTableHeader">
+            <table className="rTable">
+                <thead className="rTableHeader">
                     <tr>
-                        <th className="mOTableCell">
+                        <th className="rTableCell">
                             Devices overview
                         </th>
-                        <th className="mOTableCell"></th>
-                        <th className="mOTableCell"></th>
+                        <th className="rTableCell"></th>
+                        <th className="rTableCell"></th>
                     </tr>
                 </thead>
                 <tbody>
