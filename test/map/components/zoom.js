@@ -4,7 +4,7 @@ import sinon from 'sinon';
 
 import React from 'react';
 
-import ZoomComponent from '../../../src//map/components/zoom';
+import ZoomComponent from '../../../src/map/components/zoom';
 
 function setup() {
     let props = {

@@ -4,10 +4,10 @@ import sinon from 'sinon';
 
 import React from 'react';
 
-import MapOverviewComponent from '../../../src//map/components/overview';
-import BaseMapComponent from '../../../src//map/components/basemap';
-import ZoomComponent from '../../../src//map/components/zoom';
-import LoadingIcon from '../../../src//icons/loading';
+import MapOverviewComponent from '../../../src/map/components/overview';
+import BaseMapComponent from '../../../src/map/components/basemap';
+import ZoomComponent from '../../../src/map/components/zoom';
+import LoadingIcon from '../../../src/icons/loading';
 
 import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
 

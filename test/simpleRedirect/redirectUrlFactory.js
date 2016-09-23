@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 
-import redirectUrlFactory from '../../src//simpleRedirect/redirectUrlFactory';
+import redirectUrlFactory from '../../src/simpleRedirect/redirectUrlFactory';
 
 describe('SimpleRedirect redirectUrlFactory', () => {
     describe('healthMonitor', () => {

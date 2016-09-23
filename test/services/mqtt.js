@@ -7,7 +7,7 @@ chai.use(sinonChai);
 
 const expect = chai.expect;
 
-import Service from '../../src//service/mqtt';
+import Service from '../../src/service/mqtt';
 
 const relayrMock = {
     getConfig: () => {}

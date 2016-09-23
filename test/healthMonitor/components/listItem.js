@@ -4,7 +4,7 @@ import sinon from 'sinon';
 
 import React from 'react';
 
-import HealthMonitorListItem from '../../../src//healthMonitor/components/listItem';
+import HealthMonitorListItem from '../../../src/healthMonitor/components/listItem';
 
 function setup() {
     let props = { count: 100, status: 'online' };

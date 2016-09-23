@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 
-import MapService from '../../src//map/service';
+import MapService from '../../src/map/service';
 
 const fetchStub = sinon.stub();
 const searchFetchStub = sinon.stub();

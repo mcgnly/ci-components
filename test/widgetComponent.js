@@ -3,12 +3,12 @@ import { shallow } from 'enzyme';
 
 import React from 'react';
 
-import WidgetComponent from '../src//widgetComponent';
+import WidgetComponent from '../src/widgetComponent';
 
-import Radial from '../src//radial';
-import Temperature from '../src//temperature';
-import HealthMonitor from '../src//healthMonitor';
-import SimpleRedirect from '../src//simpleRedirect';
+import Radial from '../src/radial';
+import Temperature from '../src/temperature';
+import HealthMonitor from '../src/healthMonitor';
+import SimpleRedirect from '../src/simpleRedirect';
 
 function setup() {
     let props = {

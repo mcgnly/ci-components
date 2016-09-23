@@ -4,9 +4,9 @@ import sinon from 'sinon';
 
 import React from 'react';
 
-import HealthMonitorComponent from '../../../src//healthMonitor/components';
-import HealthMonitorListItem from '../../../src//healthMonitor/components/listItem';
-import HealthMonitorStatusAlert from '../../../src//healthMonitor/components/statusAlert';
+import HealthMonitorComponent from '../../../src/healthMonitor/components';
+import HealthMonitorListItem from '../../../src/healthMonitor/components/listItem';
+import HealthMonitorStatusAlert from '../../../src/healthMonitor/components/statusAlert';
 
 function setup() {
     let props = {

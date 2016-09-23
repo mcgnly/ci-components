@@ -4,7 +4,7 @@ import sinon from 'sinon';
 
 import React from 'react';
 
-import HumanReadbleTimestamp from '../../src//time/humanReadable';
+import HumanReadbleTimestamp from '../../src/time/humanReadable';
 
 function setup() {
     let props = {

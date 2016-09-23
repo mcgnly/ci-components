@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 
-import Service from '../../src//simpleRedirect/service';
+import Service from '../../src/simpleRedirect/service';
 
 describe('SimpleRedirect service', () => {
     let redirectSpy;

@@ -4,7 +4,7 @@ import sinon from 'sinon';
 
 import React from 'react';
 
-import { MapOverviewContainer, __RewireAPI__ as MapOverviewContainerRewireAPI } from '../../../src//map/containers/overview';
+import { MapOverviewContainer, __RewireAPI__ as MapOverviewContainerRewireAPI } from '../../../src/map/containers/overview';
 
 
 const getCoordinatesStub = sinon.stub().returns(new Promise((resolve) => {

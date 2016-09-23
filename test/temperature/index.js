@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 
 import React from 'react';
 
-import TemperatureComponent from '../../src//temperature';
+import TemperatureComponent from '../../src/temperature';
 
 import { Temperature } from 'relayr-sensor-illustrations';
 

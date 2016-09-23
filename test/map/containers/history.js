@@ -4,8 +4,8 @@ import sinon from 'sinon';
 
 import React from 'react';
 
-import { MapHistoryContainer, __RewireAPI__ as MapHistoryContainerRewireAPI } from '../../../src//map/containers/history';
-import HistoryList from '../../../src//map/components/historyList';
+import { MapHistoryContainer, __RewireAPI__ as MapHistoryContainerRewireAPI } from '../../../src/map/containers/history';
+import HistoryList from '../../../src/map/components/historyList';
 import dataPointFixture from '../../fixtures/mapHistory';
 
 class DummyComp extends React.Component {

@@ -4,7 +4,7 @@ import sinon from 'sinon';
 
 import React from 'react';
 
-import Close from '../../../src//map/components/close';
+import Close from '../../../src/map/components/close';
 
 function setup() {
     let props = {

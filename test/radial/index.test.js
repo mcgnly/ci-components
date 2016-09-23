@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 
 import React from 'react';
 
-import RadialComponent  from '../../src//radial';
+import RadialComponent  from '../../src/radial';
 
 import { Radial } from 'relayr-sensor-illustrations';
 

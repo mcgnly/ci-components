@@ -4,8 +4,8 @@ import sinon from 'sinon';
 
 import React from 'react';
 
-import MapBaseComponent from '../../../src//map/components/basemap';
-import ZoomComponent from '../../../src//map/components/zoom';
+import MapBaseComponent from '../../../src/map/components/basemap';
+import ZoomComponent from '../../../src/map/components/zoom';
 
 import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
 

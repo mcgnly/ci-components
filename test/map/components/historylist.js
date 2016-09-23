@@ -4,9 +4,9 @@ import sinon from 'sinon';
 
 import React from 'react';
 
-import HistoryListComponent from '../../../src//map/components/historyList';
-import Close from '../../../src//map/components/close';
-import LoadingIcon from '../../../src//icons/loading';
+import HistoryListComponent from '../../../src/map/components/historyList';
+import Close from '../../../src/map/components/close';
+import LoadingIcon from '../../../src/icons/loading';
 
 function setup() {
     let selectedPoint = { coordinates: [9, 9], entered: new Date(), left: new Date() };

@@ -4,7 +4,7 @@ import sinon from 'sinon';
 
 import React from 'react';
 
-import MapPopup from '../../../src//map/components/popup';
+import MapPopup from '../../../src/map/components/popup';
 
 import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
 

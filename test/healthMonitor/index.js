@@ -4,8 +4,8 @@ import sinon from 'sinon';
 
 import React from 'react';
 
-import HealthMonitorContainer from '../../src//healthMonitor';
-import HealthMonitor from '../../src//healthMonitor/components';
+import HealthMonitorContainer from '../../src/healthMonitor';
+import HealthMonitor from '../../src/healthMonitor/components';
 
 import healthMonitorStatusesFixture from '../fixtures/healthMonitorStatuses';
 

@@ -4,10 +4,10 @@ import sinon from 'sinon';
 
 import React from 'react';
 
-import Map from '../../src//map';
-import MapOverview from '../../src//map/containers/overview';
-import MapHistory from '../../src//map/containers/history';
-import Service from '../../src//map/service';
+import Map from '../../src/map';
+import MapOverview from '../../src/map/containers/overview';
+import MapHistory from '../../src/map/containers/history';
+import Service from '../../src/map/service';
 
 function setup() {
     let output = shallow(<Map/>);

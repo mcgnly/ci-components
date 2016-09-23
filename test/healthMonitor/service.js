@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 
-import HealthMonitorService from '../../src//healthMonitor/service';
+import HealthMonitorService from '../../src/healthMonitor/service';
 
 import healthMonitorStatusesFixture from '../fixtures/healthMonitorStatuses';
 

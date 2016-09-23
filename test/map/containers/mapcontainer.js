@@ -4,7 +4,7 @@ import sinon from 'sinon';
 
 import React from 'react';
 
-import HigherOrderMapContainer from '../../../src//map/containers/mapcontainer';
+import HigherOrderMapContainer from '../../../src/map/containers/mapcontainer';
 
 class DummyComp extends React.Component {
     render() {

@@ -4,8 +4,8 @@ import sinon from 'sinon';
 
 import React from 'react';
 
-import SimpleRedirect from '../../src//simpleRedirect';
-import LoadingIcon from '../../src//icons/loading';
+import SimpleRedirect from '../../src/simpleRedirect';
+import LoadingIcon from '../../src/icons/loading';
 
 const redirectSpy = sinon.spy();
 SimpleRedirect.__Rewire__('Service', {

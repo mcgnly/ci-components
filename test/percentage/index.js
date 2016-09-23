@@ -3,7 +3,7 @@ import { mount } from 'enzyme';
 
 import React from 'react';
 
-import PercentageComponent from '../../src//percentage';
+import PercentageComponent from '../../src/percentage';
 
 import { Percentage } from 'relayr-sensor-illustrations';
 
