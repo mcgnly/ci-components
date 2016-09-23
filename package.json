@@ -2,7 +2,7 @@
   "name": "millio-widgets",
   "version": "1.0.0",
   "description": "The millio widgets",
-  "main": "dist/js/millo-dashboard.js",
+  "main": "dist/js/millio-widgets.js",
   "scripts": {
     "start": "gulp && node server.js",
     "install": "",
