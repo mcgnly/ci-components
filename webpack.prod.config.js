@@ -15,7 +15,6 @@ module.exports = {
     filename: 'millio-widgets.js'
   },
   target: 'web', // in order to ignore built-in modules like path, fs, etc.
-  externals: [], // in order to ignore all modules in node_modules folder
   plugins: [definePlugin],
   resolve: {
     extensions: ['', '.js'],
@@ -30,7 +29,7 @@ module.exports = {
         test: /\.js$/,
         exclude: /(node_modules|bower_components)/,
         loader: 'babel',
-        query: { compact: true, minified: true }
+        query: { compact: false, minified: false }
     },  {
         test: /\.json$/,
         loader: 'json-loader'
