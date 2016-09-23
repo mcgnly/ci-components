@@ -7,6 +7,7 @@ Checkout repo and then run ```npm install``` (install node/npm if you do not hav
 
 To use it in your package you can do
 
+#### Widget lists
 ```
 import MilloWidgets from 'millio-widgets';
 
@@ -15,13 +16,13 @@ export default () => {
 }
 ```
 
-NB! the src needs to be transpiled when you build it so add the node package to your loader
+### Single widgets
 ```
-    loaders: [{
-        test: /\.(js)$/,
-        loaders: ['babel'],
-        include: [path.join(__dirname, 'node_modules/millio-widgets')]
-    }]
+import { WidgetComponent } from 'millio-widgets';
+
+export default ({ widget }) => {
+    return <WidgetComponent widget={widget}/>
+};
 ```
 
 To run the test applicaiton run  ```npm start```
