@@ -1,6 +1,14 @@
 import React from 'react';
 
 import WidgetComponent from './widgetComponent';
+import Radial from './radial';
+import Percentage from './percentage';
+import Temperature from './temperature';
+import NumericHistory from './numericHistory';
+import Map from './map';
+import SimpleRedirect from './simpleRedirect';
+import HealthMonitor from './healthMonitor';
+import HumanReadbleTimestamp from './time/humanReadable';
 
 export default (props) => {
     const { widgets, hasFullSizeWidget } = props;
@@ -18,4 +26,4 @@ export default (props) => {
 };
 
 
-export { WidgetComponent };
+export { WidgetComponent, Radial, Percentage, Temperature, NumericHistory, Map, SimpleRedirect, HealthMonitor, HumanReadbleTimestamp };

@@ -25,6 +25,11 @@ export default ({ widget }) => {
 };
 ```
 
+It also exposes all widgets as a named export
+```
+    import { Radial, Percentage, Temperature, NumericHistory, Map, SimpleRedirect, HealthMonitor, HumanReadbleTimestamp } from 'millio-widgets';
+```
+
 To run the test applicaiton run  ```npm start```
 
 The millio widgets example app should now be available on ```localhost:3000```.
