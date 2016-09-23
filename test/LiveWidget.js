@@ -13,6 +13,8 @@ import React from 'react';
 
 import LiveWidget from '../src/LiveWidget';
 
+import WidgetHeader from '../src/components/header';
+
 let serviceMock;
 
 let MQTTServiceStub = sinon.spy(() => serviceMock);
@@ -70,6 +72,12 @@ describe('component LiveWidget higher order component', () => {
         });
     });
 
+    describe('#render', () => {
+        it('should render a header for the widget', () => {
+            expect(wrapper.find(WidgetHeader)).to.have.length(1);
+        });
+    });
+
     it('should update the state on incoming message', () => {
         MQTTServiceStub.lastCall.args[0].onMessage({ value: 22, lastMessage: new Date(1985, 10, 8, 12, 0) });
 
@@ -85,7 +93,6 @@ describe('component LiveWidget higher order component', () => {
         wrapper.unmount();
         expect(serviceMock.disconnect).to.have.been.calledTwice;
     });
-
 
     it('should update currentTime every second', () => {
         expect(wrapper.state('currentTime')).not.to.be.defined;

@@ -3,5 +3,8 @@ import MilloWidgets from '../src';
 import WidgetExampleConfig from './widgetConfig';
 
 export default () => {
-    return <MilloWidgets widgets={WidgetExampleConfig}/>;
+    function onSettingsClick() {
+        alert('settings click');
+    }
+    return <MilloWidgets widgets={WidgetExampleConfig} onSettingsClick={onSettingsClick} showSettings={true}/>;
 };
