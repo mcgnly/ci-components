@@ -5,6 +5,25 @@ This is the source code for the millio-widgets that is used in the millo-dashboa
 ### To get going
 Checkout repo and then run ```npm install``` (install node/npm if you do not have it already installed)
 
+To use it in your package you can do
+
+```
+import MilloWidgets from 'millio-widgets';
+
+export default () => {
+    <MilloWidgets widgets={WidgetExampleConfig}/>;
+}
+```
+
+NB! the src needs to be transpiled when you build it so add the node package to your loader
+```
+    loaders: [{
+        test: /\.(js)$/,
+        loaders: ['babel'],
+        include: [path.join(__dirname, 'node_modules/millio-widgets')]
+    }]
+```
+
 To run the test applicaiton run  ```npm start```
 
 The millio widgets example app should now be available on ```localhost:3000```.
