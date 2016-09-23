@@ -2,46 +2,44 @@ var path = require('path');
 var webpack = require('webpack');
 
 var definePlugin = new webpack.DefinePlugin({
-    __LOCAL__: true,
-    __PRODUCTION__: false
+    __LOCAL__: false,
+    __PRODUCTION__: true
 });
 
 module.exports = {
-  devtool: 'eval',
   entry: [
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
     './examples/index.js'
   ],
   output: {
     path: path.join(__dirname, 'dist'),
-    filename: 'millio-widget-example.js',
-    publicPath: '/js/'
+    filename: 'millio-widget-example.js'
   },
-  plugins: [
-    new webpack.HotModuleReplacementPlugin(),
-    definePlugin
-  ],
+  target: 'web', // in order to ignore built-in modules like path, fs, etc.
+  externals: [], // in order to ignore all modules in node_modules folder
+  plugins: [definePlugin],
   resolve: {
     extensions: ['', '.js'],
     alias: {
-        'webworkify': 'webworkify-webpack'
+        react: path.resolve('./node_modules/react'),
+        webworkify: 'webworkify-webpack'
     }
   },
+  devtool: 'source-map',
   module: {
     loaders: [{
-      test: /\.(js)$/,
-      loaders: ['react-hot', 'babel'],
-      include: [path.join(__dirname, 'src'), path.join(__dirname, 'test'), path.join(__dirname, 'examples')]
-    }, {
+        test: /\.js$/,
+        exclude: /(node_modules|bower_components)/,
+        loader: 'babel',
+        query: { compact: true, minified: true }
+    },  {
         test: /\.json$/,
         loader: 'json-loader'
-    }, {
+     }, {
         test: /\.js$/,
         include: path.resolve('node_modules/mapbox-gl-shaders/index.js'),
         loader: 'transform/cacheable?brfs'
-    }],
-    postLoaders: [{
+     }],
+     postLoaders: [{
         include: /node_modules\/mapbox-gl-shaders/,
         loader: 'transform',
         query: 'brfs'
