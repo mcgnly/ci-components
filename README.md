@@ -9,10 +9,10 @@ To use it in your package you can do
 
 #### Widget lists
 ```
-import MilloWidgets from 'millio-widgets';
+import MillioWidgets from 'millio-widgets';
 
 export default () => {
-    <MilloWidgets widgets={WidgetExampleConfig}/>;
+    <MillioWidgets widgets={WidgetExampleConfig}/>;
 }
 ```
 
