@@ -68,6 +68,6 @@ export default class HealthMonitorContainer extends React.Component {
 
     render() {
         const { statusGroups, currentStatus } = this.state;
-        return (<HealthMonitorComponent statuses={statusGroups} overAllStatus={currentStatus} onLinkClick={this.onLinkClick}/>);
+        return (<HealthMonitorComponent {...this.props} statuses={statusGroups} overAllStatus={currentStatus} onLinkClick={this.onLinkClick}/>);
     }
 }

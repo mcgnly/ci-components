@@ -3,6 +3,7 @@ import React from 'react';
 import MQTTService from './service/mqtt.js';
 
 import HumanReadableTimestamp from './time/humanReadable';
+import WidgetHeader from './components/header';
 
 export default ComposedComponent => class extends React.Component {
     constructor(props) {
@@ -47,14 +48,11 @@ export default ComposedComponent => class extends React.Component {
     }
 
     render() {
-        const { title } = this.props;
+        const { title, onSettings } = this.props;
         const { lastMessage } = this.state;
         return (
             <li className="rBox rUtilityResetListItem mOWidgetBox">
-                <div className="rBoxHeader">
-                    {title}
-                    <HumanReadableTimestamp timestamp={lastMessage}></HumanReadableTimestamp>
-                </div>
+                <WidgetHeader {...this.props}/>
                 <div className="rBoxBody">
                     <div className="mOSmallWidget">
                         <ComposedComponent {...this.props} state={this.state}/>

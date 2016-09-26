@@ -2,6 +2,7 @@ import React from 'react';
 import { NumericPlot } from 'relayr-sensor-illustrations';
 
 import Service from './numericHistory.service.js';
+import WidgetHeader from '../components/header';
 
 export default class NumberHistory  extends React.Component {
     constructor(props) {
@@ -31,9 +32,7 @@ export default class NumberHistory  extends React.Component {
         const { title } = this.props;
         return (
             <li className="rBox rUtilityResetListItem mOWidgetBox mOFullWidget">
-                <div className="rBoxHeader">
-                    {title}
-                </div>
+                <WidgetHeader {...this.props}/>
                 <div className="rBoxBody">
                     <NumericPlot data={this.state.points}></NumericPlot>
                 </div>

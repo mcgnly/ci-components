@@ -12,6 +12,6 @@ gulp.task('watch', function() {
       jsFiles,
       stylesheets
     ],
-    ['less', 'assets', 'webpack:local', 'uncache:local']
+    ['less', 'assets', 'babel']
   );
 });
