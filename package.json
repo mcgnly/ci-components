@@ -6,7 +6,7 @@
   "scripts": {
     "start": "gulp && node server.js",
     "install": "",
-    "test": "mocha --recursive --require ./test/settings/setup.js --compilers js:babel-core/register",
+    "test": "cross-env BABEL_ENV=development mocha --recursive --require ./test/settings/setup.js --compilers js:babel-core/register",
     "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --recursive --require ./test/settings/setup.js --compilers js:babel-core/register",
     "style": "./node_modules/gulp/bin/gulp.js less",
     "watch": "npm run test -- -w",

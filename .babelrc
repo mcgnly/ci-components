@@ -3,7 +3,9 @@
         "es2015",
         "react"
     ],
-    "plugins": [
-        "rewire"
-    ]
+    "env": {
+        "development": {
+          "plugins": ["rewire"]
+        }
+    }
 }
