@@ -9,14 +9,14 @@ export default (props) => {
     return (
         <li className="rBox mOWidgetBox mOFullWidget">
             <WidgetHeader {...props}/>
-            <table className="mOTable">
-                <thead className="mOTableHeader">
+            <table className="rTable">
+                <thead className="rTableHeader">
                     <tr>
-                        <th className="mOTableCell">
+                        <th className="rTableCell">
                             Devices overview
                         </th>
-                        <th className="mOTableCell"></th>
-                        <th className="mOTableCell"></th>
+                        <th className="rTableCell"></th>
+                        <th className="rTableCell"></th>
                     </tr>
                 </thead>
                 <tbody>
