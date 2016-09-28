@@ -8,7 +8,6 @@ export default (props) => {
     const { statuses, onLinkClick, overAllStatus } = props;
     return (
         <li className="rBox mOWidgetBox mOFullWidget">
-            <WidgetHeader {...props}/>
             <table className="rTable">
                 <thead className="rTableHeader">
                     <tr>
