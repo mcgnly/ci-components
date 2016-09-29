@@ -2,7 +2,7 @@ import Relayr, { Device } from 'relayr-browser-sdk';
 import { MQTTURL } from '../config/urls';
 
 export default class MqttService {
-    constructor({id, meaning, path, onMessage = () => {}}) {
+    constructor({ id, meaning, path, onMessage = () => {}}) {
         this.d = new Device({
             id: id
         }, Object.assign({}, Relayr.getConfig(), {
@@ -42,12 +42,18 @@ export default class MqttService {
     }
 
     connect() {
-        this.d.connect().then((connection) => {
-            this.connection = connection;
-            connection.on('data', (data) => {
-                this.filterOnMessageMethod(this.meaning, this.path, this.onMessage)(data.readings);
+        try {
+            this.d.connect().then((connection) => {
+                this.connection = connection;
+                connection.on('data', (data) => {
+                    this.filterOnMessageMethod(this.meaning, this.path, this.onMessage)(data.readings);
+                });
+            }, (e) => {
+                console.error('Could not connect to ', this.d, e);
             });
-        });
+        } catch (e) {
+            console.error('Could not connect to ', this.d, e);
+        }
     }
 
     disconnect() {

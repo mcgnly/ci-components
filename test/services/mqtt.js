@@ -42,6 +42,13 @@ describe('mqtt Service', () => {
             expect(deviceMock.connect).to.have.been.calledOnce;
         });
 
+        it('should not throw error if sdk fails', () => {
+            deviceMock.connect.throws(new Error('Failed to connect'));
+            expect(() => {
+                service.connect();
+            }).not.to.throw(Error);
+        });
+
         describe('on incoming message', () => {
             let readings = [{ meaning: 'fake-meaning', path: 'fake-path', value: 42 }];
             beforeEach(() => {
@@ -73,6 +80,22 @@ describe('mqtt Service', () => {
                 service.connect();
 
                 expect(onMessage).not.to.have.been.calledWith(42);
+            });
+        });
+
+        describe('it should handle rejected promise', () => {
+            beforeEach(() => {
+                deviceMock.connect.returns({
+                    then: (resolve, reject) => {
+                        reject({ message: 'this didnt work' });
+                    }
+                });
+            });
+
+            it('should not throw an error or warning', () => {
+                expect(() => {
+                    service.connect();
+                }).not.to.throw(Error);
             });
         });
     });
