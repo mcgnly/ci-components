@@ -1,5 +1,20 @@
 export default [
     {
+        type: 'MapWidget',
+        version: '0.1',
+        config: {},
+        title: 'Location widget',
+        query: {
+            deviceName: 'loc'
+        },
+        results: [
+            '62136738-7833-44dc-8929-202cefbaeeb6',
+            'cc1dc38c-f49d-45c6-acfb-de4a72214c06',
+            'af4ba0bf-be7e-45fe-9fd9-5a74ca25db1f',
+            'edd2368f-705f-414c-bfd6-fcb4816a5dae'
+        ]
+    },
+    {
         type: 'Temperature',
         version: '0.1',
         config: {
@@ -16,11 +31,11 @@ export default [
         title: 'Temperature',
         query: {
             deviceIds: [
-                'a5022908-370d-4c47-8db5-4b9755fc4ec7'
+                '8c8c2244-4c65-446c-9135-847f7d422081'
             ]
         },
         results: [
-            'a5022908-370d-4c47-8db5-4b9755fc4ec7'
+            '8c8c2244-4c65-446c-9135-847f7d422081'
         ]
     },
     {
@@ -40,11 +55,11 @@ export default [
         title: 'Radial',
         query: {
             deviceIds: [
-                'a5022908-370d-4c47-8db5-4b9755fc4ec7'
+                '8c8c2244-4c65-446c-9135-847f7d422081'
             ]
         },
         results: [
-            'a5022908-370d-4c47-8db5-4b9755fc4ec7'
+            '8c8c2244-4c65-446c-9135-847f7d422081'
         ]
     },
     {
@@ -64,27 +79,24 @@ export default [
         title: 'Percentage',
         query: {
             deviceIds: [
-                'a5022908-370d-4c47-8db5-4b9755fc4ec7'
+                '8c8c2244-4c65-446c-9135-847f7d422081'
             ]
         },
         results: [
-            'a5022908-370d-4c47-8db5-4b9755fc4ec7'
+            '8c8c2244-4c65-446c-9135-847f7d422081'
         ]
     },
     {
         type: 'healthMonitor',
         version: '0.1',
         config: {
-            healthMonitorId: '5f35fc83-3b3b-4540-81cc-647f7de33f0b'
+            healthMonitorId: '06f74e52-36f5-4993-b1f4-0d633e966777'
         },
         title: 'Health monitor',
         query: {
-            deviceIds: [
-                'a5022908-370d-4c47-8db5-4b9755fc4ec7'
-            ]
+            deviceIds: []
         },
         results: [
-            'a5022908-370d-4c47-8db5-4b9755fc4ec7'
         ]
     },
     {
@@ -104,11 +116,11 @@ export default [
         title: 'NumericHistory',
         query: {
             deviceIds: [
-                'a5022908-370d-4c47-8db5-4b9755fc4ec7'
+                '8c8c2244-4c65-446c-9135-847f7d422081'
             ]
         },
         results: [
-            'a5022908-370d-4c47-8db5-4b9755fc4ec7'
+            '8c8c2244-4c65-446c-9135-847f7d422081'
         ]
     },
     {
@@ -117,12 +129,13 @@ export default [
         config: {},
         title: 'Map Full size',
         query: {
-            deviceIds: [
-                'a5022908-370d-4c47-8db5-4b9755fc4ec7'
-            ]
+            deviceName: 'loc'
         },
         results: [
-            'a5022908-370d-4c47-8db5-4b9755fc4ec7'
+            '62136738-7833-44dc-8929-202cefbaeeb6',
+            'cc1dc38c-f49d-45c6-acfb-de4a72214c06',
+            'af4ba0bf-be7e-45fe-9fd9-5a74ca25db1f',
+            'edd2368f-705f-414c-bfd6-fcb4816a5dae'
         ]
     }
 ];
