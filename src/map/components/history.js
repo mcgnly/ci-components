@@ -9,7 +9,7 @@ export default ({ points, selectedPoint = { coordinates: [] }, center, onFeature
     const route = points.map((c) => c.coordinates);
     const selectedCoordinates = selectedPoint.coordinates;
     return (
-        <ul className="rUtilityResetList mCHistoryMap">
+        <div className="mCHistoryMap">
             <BaseMap
                 center={center}
                 onLoad={onLoad}
@@ -37,6 +37,6 @@ export default ({ points, selectedPoint = { coordinates: [] }, center, onFeature
                    <Feature coordinates={selectedCoordinates}/>
                </Layer>
             </BaseMap>
-        </ul>
+        </div>
     );
 };

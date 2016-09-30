@@ -14,7 +14,8 @@ function setup() {
         title: 'my-title',
         id: 'device-id-0',
         coordinates: [1, 1],
-        onClick: sinon.spy()
+        onClick: sinon.spy(),
+        featureInstruction: 'show this message'
     };
 
     let output = shallow(<MapPopup {...props}/>);
@@ -57,5 +58,9 @@ describe('component <MapPopup/>', () => {
 
     it('sohuld set the provided coordinates', () => {
         expect(output.prop('coordinates')).to.deep.equal([1, 1]);
+    });
+
+    it('should insert specified featureInstruction', () => {
+        expect(output.find('.mCPopup').text()).to.have.string('show this message');
     });
 });

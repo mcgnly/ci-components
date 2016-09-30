@@ -36,7 +36,7 @@ export default class MapContainer extends React.Component {
             const { historyDeviceId } = this.state;
             return <MapHistory {...this.props} deviceID={historyDeviceId} service={this.service} onCloseClick={this.onHistoryClose}/>;
         } else {
-            return <MapOverview {...this.props} service={this.service} onPopupClick={this.onShowHistoryClick}/>;
+            return <MapOverview {...this.props} service={this.service} featureInstruction="Show history" onPopupClick={this.onShowHistoryClick}/>;
         }
     }
 }

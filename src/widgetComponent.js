@@ -4,6 +4,7 @@ import Percentage from './percentage';
 import Temperature from './temperature';
 import NumericHistory from './numericHistory';
 import Map from './map';
+import SmallMapWidget from './map/smallWidget';
 import SimpleRedirect from './simpleRedirect';
 import HealthMonitor from './healthMonitor';
 
@@ -13,7 +14,8 @@ const Components = {
     Temperature,
     NumericHistory,
     Map,
-    healthMonitor: HealthMonitor
+    healthMonitor: HealthMonitor,
+    MapWidget: SmallMapWidget
 };
 
 export default (props) => {
