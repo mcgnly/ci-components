@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Popup } from 'react-mapbox-gl';
 
-export default ({ show, title, id, coordinates = [], onMapClick }) => {
+export default ({ show, title, id, coordinates = [], onClick: onMapClick }) => {
     const popup = (
         <Popup coordinates={coordinates} anchor="bottom">
             <div className="mCPopup" onClick={() => onMapClick(id)}>
@@ -13,5 +13,5 @@ export default ({ show, title, id, coordinates = [], onMapClick }) => {
             </div>
         </Popup>
     );
-    return (show ? popup : '');
+    return (show ? popup : <div></div>);
 };
