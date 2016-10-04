@@ -19,7 +19,7 @@ const minFilter = {
 
 export default ({ points, center, popup = {}, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn }) => {
     const features = points.map((c) => (<Feature coordinates={c.coordinates} properties={c.properties} onClick={() => onFeatureClick(c)}/>));
-    let loading;
+    let loading = '';
     if (points.length === 0) {
         loading = (
             <div className="mUCenterFullScreen">
