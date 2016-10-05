@@ -1,1 +1,2 @@
 5.10.2016 1.0.1) Added new location widget
+5.10.2016 1.0.2) Bugfix) Location widget has show widget button
