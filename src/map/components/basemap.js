@@ -7,14 +7,14 @@ import { style, token } from '../config';
 import MapPopup from './popup';
 import Zoom from './zoom';
 
-export default ({ center, popup = {}, onMapClick, onLoad, onZoomOut, onZoomIn, children, className = '' }) => {
+export default ({ center, popup = {}, onMapClick, onLoad, onZoomOut, onZoomIn, children, className = '', height = '92vh' }) => {
     return (
-        <li className={`mCMapContainer ${className}`}>
+        <div className={`mCMapContainer ${className}`}>
             <ReactMapboxGl
                 style={style}
                 center={center}
                 onStyleLoad={onLoad}
-                containerStyle={{ height: '92vh' }}
+                containerStyle={{ height }}
                 movingMethod="jumpTo"
                 accessToken={token}
                 pitch={0}
@@ -26,7 +26,7 @@ export default ({ center, popup = {}, onMapClick, onLoad, onZoomOut, onZoomIn, c
                 <Zoom onZoomIn={onZoomIn} onZoomOut={onZoomOut}/>
             </ReactMapboxGl>
             <a href="http://mapbox.com/about/maps" className='mCMapContainerMapboxLogo' target="_blank">Mapbox</a>
-        </li>
+        </div>
 
     );
 };

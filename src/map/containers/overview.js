@@ -34,14 +34,15 @@ export class MapOverviewContainer extends React.Component {
     }
 
     onFeatureClick(c) {
-        const { onPopupClick } = this.props;
+        const { onPopupClick, featureInstruction } = this.props;
         this.setState({
             popup: {
                 show: true,
                 title: c.properties.title,
                 id: c.properties.id,
                 coordinates: c.coordinates,
-                onClick: onPopupClick
+                onClick: onPopupClick,
+                featureInstruction
             }
         });
     }
@@ -56,7 +57,7 @@ export class MapOverviewContainer extends React.Component {
 
     render() {
         const { points, center, popup, zoom } = this.state;
-        const { onZoomIn, onZoomOut, onMapLoad } = this.props;
+        const { onZoomIn, onZoomOut, onMapLoad, height } = this.props;
         return (
             <Map
                 points={points}
@@ -67,6 +68,7 @@ export class MapOverviewContainer extends React.Component {
                 onLoad={onMapLoad}
                 onZoomIn={onZoomIn}
                 onZoomOut={onZoomOut}
+                height={height}
             />
         );
     }

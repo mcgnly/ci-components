@@ -7,6 +7,10 @@ export const sourceOptions = {
     clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
 };
 
+export const smallConfig = {
+    height: '500px'
+};
+
 let apiURL;
 if (__LOCAL__) {
     apiURL = 'api.relayr.io';

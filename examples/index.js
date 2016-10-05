@@ -5,7 +5,7 @@ import Relayr from 'relayr-browser-sdk';
 
 import App from './app';
 
-import { ApiURL } from '../src/config/urls';
+import { ApiURL, DataURL } from '../src/config/urls';
 
 Relayr.init({
     // id: '8fedfb26-82b7-493f-a7c6-e3a4b592dd25',
@@ -14,7 +14,8 @@ Relayr.init({
 }, {
     ajax: {
         protocol: 'https://',
-        uri: ApiURL
+        uri: ApiURL,
+        dataUri: DataURL
     }
 });
 

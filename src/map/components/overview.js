@@ -8,16 +8,13 @@ import { sourceOptions } from '../config';
 
 import LoadIcon from '../../icons/loading';
 
-const markerSettings = {
-    layout: { 'text-size': 14 },
-    paint: { 'text-color': '#FFFFFF', 'text-translate': [0, -6] }
-};
+import { layoutFactory, paintFactory } from './styleFactory';
 
 const minFilter = {
     filter: ['>=', 'point_count', 2]
 };
 
-export default ({ points, center, popup = {}, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn }) => {
+export default ({ points, center, popup = {}, height, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn }) => {
     const features = points.map((c) => (<Feature coordinates={c.coordinates} properties={c.properties} onClick={() => onFeatureClick(c)}/>));
     let loading = '';
     if (points.length === 0) {
@@ -37,20 +34,21 @@ export default ({ points, center, popup = {}, onFeatureClick, onMapClick, onLoad
                 onMapClick={onMapClick}
                 onZoomIn={onZoomIn}
                 onZoomOut={onZoomOut}
+                height={height}
                 >
                 <Layer
                     id="marker"
                     type="symbol"
                     sourceOptions={sourceOptions}
-                    layout={{ 'icon-image': 'pin' }}>
+                    layout={layoutFactory('marker')}>
                     {features}
                 </Layer>
 
                 <Layer
                     id="cluster-count"
                     type="symbol"
-                    layout={Object.assign({}, markerSettings.layout, { 'text-field': '{point_count}' })}
-                    paint={markerSettings.paint}
+                    layout={layoutFactory('clusterCount')}
+                    paint={paintFactory('clusterCount')}
                     sourceOptions={sourceOptions}
                     layerOptions={minFilter}
                 >

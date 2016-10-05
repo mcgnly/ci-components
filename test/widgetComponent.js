@@ -9,6 +9,8 @@ import Radial from '../src/radial';
 import Temperature from '../src/temperature';
 import HealthMonitor from '../src/healthMonitor';
 import SimpleRedirect from '../src/simpleRedirect';
+import SmallMapWidget from '../src/map/smallWidget';
+import Map from '../src/map';
 
 function setup() {
     let props = {
@@ -52,5 +54,17 @@ describe('component <WidgetComponent/>', () => {
         const widget = { type: 'healthMonitor', title: 'test' };
         const output = shallow(<WidgetComponent widget={widget}/>);
         expect(output.type()).to.equal(HealthMonitor);
+    });
+
+    it('should be set for Map to Map widget', () => {
+        const widget = { type: 'Map', title: 'test' };
+        const output = shallow(<WidgetComponent widget={widget}/>);
+        expect(output.type()).to.equal(Map);
+    });
+
+    it('should be set for MapWidget to SmallMapWidget', () => {
+        const widget = { type: 'MapWidget', title: 'test' };
+        const output = shallow(<WidgetComponent widget={widget}/>);
+        expect(output.type()).to.equal(SmallMapWidget);
     });
 });

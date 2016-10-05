@@ -7,13 +7,14 @@ import WidgetHeader from '../components/header';
 export default class NumberHistory  extends React.Component {
     constructor(props) {
         super(props);
-        const { title, readings} = props;
+        const { title, devices, config: { readings } } = props;
         this.title = title;
-        this.state = { points: []}
+        this.state = { points: []};
 
-        readings.forEach((reading) => {
+        devices.forEach((id, i) => {
+            const reading = readings[i];
             this.service = new Service({
-                id: reading.id,
+                id,
                 meaning: reading.meaning,
                 path: reading.path
             });
