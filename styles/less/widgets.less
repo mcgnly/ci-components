@@ -1,6 +1,6 @@
 @mSmallWidgetWidth: 100px;
 @mSmallWidgetHeight: 120px;
-@mWidgetMinHeight: 170px;
+@mWigetFullMinWidth: 360px;
 
 .mOSmallWidget {
     width: @mSmallWidgetWidth;
@@ -14,9 +14,9 @@
     display: block;
     width: auto;
     box-sizing: border-box;
+    min-width: @mWigetFullMinWidth;
 }
 
 .mOWidgetBox {
-    min-height: @mWidgetMinHeight;
     vertical-align: top;
 }
