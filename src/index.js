@@ -9,6 +9,7 @@ import Map from './map';
 import SimpleRedirect from './simpleRedirect';
 import HealthMonitor from './healthMonitor';
 import HumanReadbleTimestamp from './time/humanReadable';
+import MapWidget from './map/smallWidget';
 
 export default (props) => {
     const { widgets, hasFullSizeWidget } = props;
@@ -26,4 +27,15 @@ export default (props) => {
 };
 
 
-export { WidgetComponent, Radial, Percentage, Temperature, NumericHistory, Map, SimpleRedirect, HealthMonitor, HumanReadbleTimestamp };
+export {
+    WidgetComponent,
+    Radial,
+    Percentage,
+    Temperature,
+    NumericHistory,
+    Map,
+    MapWidget,
+    SimpleRedirect,
+    HealthMonitor,
+    HumanReadbleTimestamp
+};

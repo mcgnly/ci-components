@@ -1,6 +1,6 @@
 # millio-widgets
 
-This is the source code for the millio-widgets that is used in the millo-dashboard code.
+This is the source code for the millio-widgets that is used in the millo-dashboard code. Demo http://relayr.github.io/millio-widgets
 
 ### To get going
 Checkout repo and then run ```npm install``` (install node/npm if you do not have it already installed)
@@ -27,7 +27,7 @@ export default ({ widget }) => {
 
 It also exposes all widgets as a named export
 ```
-    import { Radial, Percentage, Temperature, NumericHistory, Map, SimpleRedirect, HealthMonitor, HumanReadbleTimestamp } from 'millio-widgets';
+    import { Radial, Percentage, Temperature, NumericHistory, Map, SimpleRedirect, HealthMonitor, HumanReadbleTimestamp, MapWidget} from 'millio-widgets';
 ```
 
 To run the test applicaiton run  ```npm start```
