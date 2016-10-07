@@ -58,7 +58,11 @@ export default class MqttService {
 
     disconnect() {
         if (this.connection && this.connection.unsubscribe) {
-            this.connection.unsubscribe();
+            try {
+                this.connection.unsubscribe();
+            } catch (e) {
+                console.error('Could not unconnect to ', this.d, e);
+            }
         }
     }
 };

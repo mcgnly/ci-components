@@ -106,7 +106,7 @@ describe('mqtt Service', () => {
         beforeEach(() => {
             connectionMock = {
                 on: () => {},
-                unsubscribe: sinon.spy()
+                unsubscribe: sinon.stub()
             };
 
             deviceMock.connect.returns({
@@ -135,6 +135,14 @@ describe('mqtt Service', () => {
             service.disconnect();
 
             expect(connectionMock.unsubscribe).not.to.have.been.calledOnce;
+        });
+
+        it('should not throw error if sdk fails', () => {
+            connectionMock.unsubscribe.throws(new Error('Something when wrong on unsubscribe'));
+            service.connect();
+            expect(() => {
+                service.disconnect();
+            }).not.to.throw(Error);
         });
     });
 });
