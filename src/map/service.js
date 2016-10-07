@@ -3,8 +3,8 @@ import Relayr from 'relayr-browser-sdk';
 import { ApiURL } from './config';
 
 export default class CoordinatesService {
-    constructor(deviceIds) {
-        this.deviceIds = deviceIds;
+    constructor(devices) {
+        this.deviceIds = devices.map(({ id }) => id);
         this.ajax = Relayr.customAjax({
             uri: ApiURL,
             token: Relayr.getCurrentUser().token

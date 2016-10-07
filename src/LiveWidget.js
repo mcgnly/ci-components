@@ -15,7 +15,7 @@ export default ComposedComponent => class extends React.Component {
         };
 
         this.services = [];
-        devices.forEach((id) => {
+        devices.forEach(({ id }) => {
             this.services = this.services.concat(readings.map(({ meaning, path }) => new MQTTService({
                 id,
                 meaning,

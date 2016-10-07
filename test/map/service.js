@@ -23,10 +23,10 @@ MapService.__Rewire__('Relayr', {
 });
 
 const deviceFixtures = [
-    'device-id-0',
-    'device-id-1',
-    'device-id-2',
-    'device-id-3'
+    { id: 'device-id-0' },
+    { id: 'device-id-1' },
+    { id: 'device-id-2' },
+    { id: 'device-id-3' }
 ];
 
 describe('MapService', () => {

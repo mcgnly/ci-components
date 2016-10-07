@@ -10,7 +10,8 @@ import MapHistory from '../../src/map/containers/history';
 import Service from '../../src/map/service';
 
 function setup() {
-    let output = shallow(<Map/>);
+    let props = { devices: [{ id: 'map-device' }] };
+    let output = shallow(<Map {...props}/>);
 
     return {
         output

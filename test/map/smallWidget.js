@@ -11,7 +11,8 @@ import { smallConfig } from '../../src/map/config';
 import Service from '../../src/map/service';
 
 function setup() {
-    let output = shallow(<SmallWidget/>);
+    let props = { devices: [{ id: 'map-device-id' }] };
+    let output = shallow(<SmallWidget {...props}/>);
 
     return {
         output

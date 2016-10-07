@@ -11,7 +11,7 @@ export default class NumberHistory  extends React.Component {
         this.title = title;
         this.state = { points: []};
 
-        devices.forEach((id, i) => {
+        devices.forEach(({ id }, i) => {
             const reading = readings[i];
             this.service = new Service({
                 id,

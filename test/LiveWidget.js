@@ -24,7 +24,7 @@ LiveWidget.__Rewire__('MQTTService', MQTTServiceStub);
 function setup() {
     let props = {
         title: 'test-title',
-        devices: ['my-id', 'my-second-id'],
+        devices: [{ id: 'my-id' }, { id: 'my-second-id' }],
         readings: [{ path: 'my-path', meaning: 'my-meaning' }]
     };
 
@@ -66,7 +66,7 @@ describe('component LiveWidget higher order component', () => {
 
     it('should pass reading, meaning and for all device ids', () => {
         MQTTServiceStub.args.forEach((call, i) => {
-            expect(call[0]).to.have.property('id', props.devices[i]);
+            expect(call[0]).to.have.property('id', props.devices[i].id);
             expect(call[0]).to.have.property('path', props.readings[0].path);
             expect(call[0]).to.have.property('meaning', props.readings[0].meaning);
         });
