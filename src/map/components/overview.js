@@ -14,19 +14,20 @@ const minFilter = {
     filter: ['>=', 'point_count', 2]
 };
 
-export default ({ points, center, popup = {}, height, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn }) => {
-    const features = points.map((c) => (<Feature coordinates={c.coordinates} properties={c.properties} onClick={() => onFeatureClick(c)}/>));
-    let loading = '';
-    if (points.length === 0) {
-        loading = (
-            <div className="mUCenterFullScreen">
-                <LoadIcon/>
+export default ({ points, message, center, popup = {}, height, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn }) => {
+    let messageComponent = '';
+    if (message) {
+        messageComponent = (
+            <div className="mUCenterFullScreen mQAMapMessage">
+                { message === 'loading' ? <LoadIcon/> : <p>{message}</p> }
             </div>
         );
     }
+
+    const features = points.map((c) => (<Feature coordinates={c.coordinates} properties={c.properties} onClick={() => onFeatureClick(c)}/>));
     return (
         <div>
-            {loading}
+            {messageComponent}
             <BaseMap
                 center={center}
                 popup={popup}

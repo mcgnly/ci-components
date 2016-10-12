@@ -52,11 +52,20 @@ describe('component <HistoryListComponent/>', () => {
         expect(output.find('.mCHistoryListItem')).to.have.length(4);
     });
 
-    it('should render a loading icon if no points has been provided', () => {
-        output.setProps({
-            points: []
+    describe('message', () => {
+        it('should render a loading icon if the message is loading been provided', () => {
+            output.setProps({
+                message: 'loading'
+            });
+            expect(output.find(LoadingIcon)).to.have.length(1);
         });
-        expect(output.find(LoadingIcon)).to.have.length(1);
+
+        it('should render a message container', () => {
+            output.setProps({
+                message: 'a different message'
+            });
+            expect(output.find('.mCHistoryListItem').text()).to.equal('a different message');
+        });
     });
 
     it('should render each point with coordinates and data', () => {

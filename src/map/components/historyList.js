@@ -3,14 +3,15 @@ import React from 'react';
 import Close from './close';
 import LoadingIcon from '../../icons/loading';
 
-function createListItems(points, selectedPoint, onSelect) {
-    if (points.length === 0) {
+function createListItems(points, message, selectedPoint, onSelect) {
+    if (message) {
         return (
             <li className="mCHistoryListItem mCHistoryListLoading">
-                <LoadingIcon/>
+                { message === 'loading' ? <LoadingIcon/> : message}
             </li>
         );
     }
+
     return points.map((p, i) => {
         const coordinatesStr = p.coordinates.reduce((str, c) => `${str}, ${c}`);
         const isSelectedPoint = p === selectedPoint;
@@ -31,7 +32,7 @@ function createListItems(points, selectedPoint, onSelect) {
     });
 }
 
-export default ({ points, selectedPoint, onSelect, onClose }) => {
+export default ({ points, message, selectedPoint, onSelect, onClose }) => {
     return (
         <div className="mCHistoryListContainer">
             <div className="mCHistoryListHeader">
@@ -39,7 +40,7 @@ export default ({ points, selectedPoint, onSelect, onClose }) => {
                 <Close onClose={onClose}/>
             </div>
             <ul className="mCHistoryList">
-                {createListItems(points, selectedPoint, onSelect)}
+                {createListItems(points, message, selectedPoint, onSelect)}
             </ul>
         </div>
     );
