@@ -5,8 +5,14 @@ import HistoryList from '../components/historyList';
 
 import MapContainer from './mapcontainer';
 
-const noPointsMessage = 'No historical location was found';
-const failedPointsMessage = 'Could not get the historical location please try again';
+const noPointsMessage = {
+    title: 'No device history found',
+    message: 'We couldn\'t find any historical data for the specified device. Please try again or contact us for assistance.'
+};
+const failedPointsMessage = {
+    title: 'Error',
+    message: 'Could not get the historical location please try again'
+};
 
 export class MapHistoryContainer extends React.Component {
     constructor(props) {

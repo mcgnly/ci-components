@@ -90,7 +90,8 @@ describe('widget Map <MapHistory/> container', () => {
                 resolve([]);
             }));
             return wrapper.instance().componentDidMount().then(() => {
-                expect(wrapper.state('message')).to.equal('No historical location was found');
+                expect(wrapper.state('message').title).to.equal('No device history found');
+                expect(wrapper.state('message').message).to.be.defined;
             });
         });
 
@@ -99,7 +100,8 @@ describe('widget Map <MapHistory/> container', () => {
                 reject([]);
             }));
             return wrapper.instance().componentDidMount().then(() => {
-                expect(wrapper.state('message')).to.equal('Could not get the historical location please try again');
+                expect(wrapper.state('message').title).to.equal('Error');
+                expect(wrapper.state('message').message).to.be.defined;
             });
         });
     });

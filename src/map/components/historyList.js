@@ -2,12 +2,14 @@ import React from 'react';
 
 import Close from './close';
 import LoadingIcon from '../../icons/loading';
+import Modal from '../../components/modal';
 
-function createListItems(points, message, selectedPoint, onSelect) {
-    if (message) {
+function createListItems(points, messageObj, selectedPoint, onSelect) {
+    if (messageObj) {
+        const { title, message } = messageObj;
         return (
             <li className="mCHistoryListItem mCHistoryListLoading">
-                { message === 'loading' ? <LoadingIcon/> : message}
+                { message === 'loading' ? <LoadingIcon/> : <Modal title={title}>{message}</Modal> }
             </li>
         );
     }

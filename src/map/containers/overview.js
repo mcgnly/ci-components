@@ -3,8 +3,8 @@ import React from 'react';
 import Map from '../components/overview';
 import MapContainer from './mapcontainer';
 
-const noPointsMessage = 'No locations found';
-const failedPointsMessage = 'Could not get the location please try again';
+const noPointsMessage = { title: 'No devices found', message: 'We couldn’t find any devices registered for your account. Please assign the devices you want to have displayed in this dashboard.' };
+const failedPointsMessage = { title: 'Error', message: 'Could not get the location please try again' };
 
 export class MapOverviewContainer extends React.Component {
     constructor(props) {
@@ -15,7 +15,7 @@ export class MapOverviewContainer extends React.Component {
             popup: {
                 show: false
             },
-            message: 'loading'
+            message: { message: 'loading' }
         };
 
         const { devices, service } = this.props;

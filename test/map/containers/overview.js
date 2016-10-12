@@ -55,7 +55,7 @@ describe('widget Map <MapOverviewContainer/> container', () => {
     });
 
     it('should have default message set to loading', () => {
-        expect(wrapper.state('message')).to.equal('loading');
+        expect(wrapper.state('message')).to.deep.equal({ message: 'loading' });
     });
 
     describe('on mount', () => {
@@ -76,7 +76,8 @@ describe('widget Map <MapOverviewContainer/> container', () => {
                 resolve([]);
             }));
             return wrapper.instance().componentDidMount().then(() => {
-                expect(wrapper.state('message')).to.equal('No locations found');
+                expect(wrapper.state('message').title).to.equal('No devices found');
+                expect(wrapper.state('message').message).to.be.defined;
             });
         });
 
@@ -85,7 +86,8 @@ describe('widget Map <MapOverviewContainer/> container', () => {
                 reject([]);
             }));
             return wrapper.instance().componentDidMount().then(() => {
-                expect(wrapper.state('message')).to.equal('Could not get the location please try again');
+                expect(wrapper.state('message').title).to.equal('Error');
+                expect(wrapper.state('message').message).to.be.defined;
             });
         });
     });

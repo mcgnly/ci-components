@@ -7,6 +7,7 @@ import React from 'react';
 import HistoryListComponent from '../../../src/map/components/historyList';
 import Close from '../../../src/map/components/close';
 import LoadingIcon from '../../../src/icons/loading';
+import Modal from '../../../src/components/modal';
 
 function setup() {
     let selectedPoint = { coordinates: [9, 9], entered: new Date(), left: new Date() };
@@ -55,16 +56,17 @@ describe('component <HistoryListComponent/>', () => {
     describe('message', () => {
         it('should render a loading icon if the message is loading been provided', () => {
             output.setProps({
-                message: 'loading'
+                message: { message: 'loading' }
             });
             expect(output.find(LoadingIcon)).to.have.length(1);
         });
 
         it('should render a message container', () => {
             output.setProps({
-                message: 'a different message'
+                message: { title: 'a different title', message: 'a different message' }
             });
-            expect(output.find('.mCHistoryListItem').text()).to.equal('a different message');
+            expect(output.find(Modal).prop('title')).to.equal('a different title');
+            expect(output.find(Modal).prop('children')).to.equal('a different message');
         });
     });
 

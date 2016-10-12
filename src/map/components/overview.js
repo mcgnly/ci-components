@@ -6,7 +6,8 @@ import { Layer, Feature } from 'react-mapbox-gl';
 
 import { sourceOptions } from '../config';
 
-import LoadIcon from '../../icons/loading';
+import LoadingIcon from '../../icons/loading';
+import Modal from '../../components/modal';
 
 import { layoutFactory, paintFactory } from './styleFactory';
 
@@ -14,12 +15,13 @@ const minFilter = {
     filter: ['>=', 'point_count', 2]
 };
 
-export default ({ points, message, center, popup = {}, height, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn }) => {
+export default ({ points, message: messageObj, center, popup = {}, height, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn }) => {
     let messageComponent = '';
-    if (message) {
+    if (messageObj) {
+        const { title, message } = messageObj;
         messageComponent = (
-            <div className="mUCenterFullScreen mQAMapMessage">
-                { message === 'loading' ? <LoadIcon/> : <p>{message}</p> }
+            <div className="mUCenterFullScreen">
+                { message === 'loading' ? <LoadingIcon/> : <Modal title={title}>{message}</Modal> }
             </div>
         );
     }
