@@ -7,6 +7,7 @@ import { Layer, Feature } from 'react-mapbox-gl';
 import { sourceOptions } from '../config';
 
 import LoadIcon from '../../icons/loading';
+import ControlPanel from '../../components/controlPanel';
 
 import { layoutFactory, paintFactory } from './styleFactory';
 
@@ -14,7 +15,7 @@ const minFilter = {
     filter: ['>=', 'point_count', 2]
 };
 
-export default ({ points, center, popup = {}, height, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn }) => {
+export default ({ points, center, popup = {}, height, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn, onRefresh }) => {
     const features = points.map((c) => (<Feature coordinates={c.coordinates} properties={c.properties} onClick={() => onFeatureClick(c)}/>));
     let loading = '';
     if (points.length === 0) {
@@ -55,6 +56,7 @@ export default ({ points, center, popup = {}, height, onFeatureClick, onMapClick
                     {features}
                 </Layer>
             </BaseMap>
+            <ControlPanel onRefresh={onRefresh}/>
         </div>
     );
 };

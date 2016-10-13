@@ -7,6 +7,7 @@ import React from 'react';
 import MapHistoryComponent from '../../../src/map/components/history';
 import BaseMapComponent from '../../../src/map/components/basemap';
 import ZoomComponent from '../../../src/map/components/zoom';
+import ControlPanel from '../../../src/components/controlPanel';
 
 import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
 
@@ -88,6 +89,16 @@ describe('component <MapHistoryComponent/>', () => {
         it('should have one feature with all coordinates in order', () => {
             const routeLayer = output.find('Layer[id="route-line"]');
             expect(routeLayer.find(Feature).prop('coordinates')).to.deep.equal([[1, 1], [2, 2], [3, 3], [9, 9]]);
+        });
+    });
+
+    describe('control panel', () => {
+        it('should render a control panel with refresh', () => {
+            expect(output.find(ControlPanel)).to.have.length(1);
+        });
+
+        it('should pass props to the control panel', () => {
+            expect(output.find(ControlPanel).prop('onRefresh')).to.equal(props.onRefresh);
         });
     });
 

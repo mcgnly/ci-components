@@ -92,6 +92,17 @@ describe('widget Map <MapOverviewContainer/> container', () => {
         });
     });
 
+    describe('on refresh click', () => {
+        beforeEach(() => {
+            getCoordinatesStub.reset();
+        });
+
+        it('should get the location for the devices', () => {
+            wrapper.find(DummyComp).prop('onRefresh')();
+            expect(getCoordinatesStub).to.have.been.calledOnce;
+        });
+    });
+
     describe('on load', () => {
         it('should get the location for the devices', () => {
             expect(getCoordinatesStub).to.have.been.calledOnce;
