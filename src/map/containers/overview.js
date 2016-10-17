@@ -71,7 +71,7 @@ export class MapOverviewContainer extends React.Component {
 
     render() {
         const { points, center, popup, zoom, message } = this.state;
-        const { onZoomIn, onZoomOut, onMapLoad, height } = this.props;
+        const { onMapLoad } = this.props;
         return (
             <Map
                 points={points}
@@ -82,9 +82,7 @@ export class MapOverviewContainer extends React.Component {
                 onFeatureClick={this.onFeatureClick}
                 onRefresh={this.fetchData}
                 onLoad={onMapLoad}
-                onZoomIn={onZoomIn}
-                onZoomOut={onZoomOut}
-                height={height}
+                {...this.props}
             />
         );
     }
