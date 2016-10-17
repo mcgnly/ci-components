@@ -23,9 +23,14 @@ export class MapOverviewContainer extends React.Component {
 
         this.onFeatureClick = this.onFeatureClick.bind(this);
         this.closePopup = this.closePopup.bind(this);
+        this.fetchData = this.fetchData.bind(this);
     }
 
     componentDidMount() {
+        return this.fetchData();
+    }
+
+    fetchData() {
         const { fitMap } = this.props;
         return this.service.getCoordinates().then((points) => {
             const center = points[0] ? points[0].coordinates : [0, 0];
@@ -75,6 +80,7 @@ export class MapOverviewContainer extends React.Component {
                 popup={popup}
                 onMapClick={this.closePopup}
                 onFeatureClick={this.onFeatureClick}
+                onRefresh={this.fetchData}
                 onLoad={onMapLoad}
                 onZoomIn={onZoomIn}
                 onZoomOut={onZoomOut}

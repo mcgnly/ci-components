@@ -27,9 +27,14 @@ export class MapHistoryContainer extends React.Component {
         this.service = this.props.service;
 
         this.onSelectItem = this.onSelectItem.bind(this);
+        this.fetchData = this.fetchData.bind(this);
     }
 
     componentDidMount() {
+        return this.fetchData();
+    }
+
+    fetchData() {
         const { deviceID, fitMap } = this.props;
         return this.service.getHistory(deviceID).then((points) => {
             this.setState({
@@ -43,7 +48,6 @@ export class MapHistoryContainer extends React.Component {
                 message: failedPointsMessage
             });
         });
-
     }
 
     onSelectItem(point) {
@@ -67,6 +71,7 @@ export class MapHistoryContainer extends React.Component {
                     onLoad={onMapLoad}
                     onZoomIn={onZoomIn}
                     onZoomOut={onZoomOut}
+                    onRefresh={this.fetchData}
                 ></HistoryMap>
                 <HistoryList
                     message={message}

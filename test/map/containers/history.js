@@ -73,7 +73,6 @@ describe('widget Map <MapHistory/> container', () => {
     });
 
     describe('on mount', () => {
-
         it('should get the history for the specified id', () => {
             expect(getHistoryStub).to.have.been.calledWith('history-device-id');
         });
@@ -103,6 +102,18 @@ describe('widget Map <MapHistory/> container', () => {
                 expect(wrapper.state('message').title).to.equal('Error');
                 expect(wrapper.state('message').message).to.be.defined;
             });
+        });
+    });
+
+
+    describe('on refresh click', () => {
+        beforeEach(() => {
+            getHistoryStub.reset();
+        });
+
+        it('should get the location for the devices', () => {
+            wrapper.find(DummyComp).prop('onRefresh')();
+            expect(getHistoryStub).to.have.been.calledOnce;
         });
     });
 });

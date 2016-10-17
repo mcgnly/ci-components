@@ -8,6 +8,7 @@ import MapOverviewComponent from '../../../src/map/components/overview';
 import BaseMapComponent from '../../../src/map/components/basemap';
 import ZoomComponent from '../../../src/map/components/zoom';
 import LoadingIcon from '../../../src/icons/loading';
+import ControlPanel from '../../../src/components/controlPanel';
 import Modal from '../../../src/components/modal';
 
 import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
@@ -23,6 +24,7 @@ function setup() {
         popup: {},
         onFeatureClick: sinon.spy(),
         onMapClick: sinon.spy(),
+        onRefresh: sinon.spy(),
         onLoad: sinon.spy(),
         onZoomIn: sinon.spy(),
         onZoomOut: sinon.spy()
@@ -134,6 +136,16 @@ describe('component <MapOverviewComponent/>', () => {
         it('should have a feature per point', () => {
             const counterLayer = output.find('Layer[id="cluster-count"]');
             expect(counterLayer.find(Feature)).to.have.length(3);
+        });
+    });
+
+    describe('control panel', () => {
+        it('should render a control panel with refresh', () => {
+            expect(output.find(ControlPanel)).to.have.length(1);
+        });
+
+        it('should pass props to the control panel', () => {
+            expect(output.find(ControlPanel).prop('onRefresh')).to.equal(props.onRefresh);
         });
     });
 

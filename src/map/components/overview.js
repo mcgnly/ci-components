@@ -7,6 +7,7 @@ import { Layer, Feature } from 'react-mapbox-gl';
 import { sourceOptions } from '../config';
 
 import LoadingIcon from '../../icons/loading';
+import ControlPanel from '../../components/controlPanel';
 import Modal from '../../components/modal';
 
 import { layoutFactory, paintFactory } from './styleFactory';
@@ -15,7 +16,7 @@ const minFilter = {
     filter: ['>=', 'point_count', 2]
 };
 
-export default ({ points, message: messageObj, center, popup = {}, height, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn }) => {
+export default ({ points, message: messageObj, center, popup = {}, height, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn, onRefresh}) => {
     let messageComponent = '';
     if (messageObj) {
         const { title, message } = messageObj;
@@ -58,6 +59,7 @@ export default ({ points, message: messageObj, center, popup = {}, height, onFea
                     {features}
                 </Layer>
             </BaseMap>
+            <ControlPanel onRefresh={onRefresh}/>
         </div>
     );
 };
