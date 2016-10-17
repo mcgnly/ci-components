@@ -3,3 +3,4 @@
 5.10.2016 1.0.3) Bugfix) Removed unecessary styles
 7.10.2016 1.0.4) Bugfix) Supports devices that are full objects and not just ids
 7.10.2016 1.0.5) Bugfix) Should catch exceptions on mqtt unsubscribe
+17.19.2016 1.0.6) Feature Location widget triggers warning modal, on no features and error
