@@ -8,6 +8,7 @@ import MapOverviewComponent from '../../../src/map/components/overview';
 import BaseMapComponent from '../../../src/map/components/basemap';
 import ZoomComponent from '../../../src/map/components/zoom';
 import LoadingIcon from '../../../src/icons/loading';
+import Modal from '../../../src/components/modal';
 
 import ReactMapboxGl, { Layer, Feature, Popup } from 'react-mapbox-gl';
 
@@ -48,10 +49,28 @@ describe('component <MapOverviewComponent/>', () => {
         expect(output.find(BaseMapComponent)).to.have.length(1);
     });
 
-    describe('no points', () => {
-        it('should show a loading icon', () => {
+    describe('message', () => {
+        it('should render a loading icon if the message is loading been provided', () => {
             output.setProps({
-                points: []
+                message: { message: 'loading' }
+            });
+            expect(output.find(LoadingIcon)).to.have.length(1);
+        });
+
+        it('should render a message container', () => {
+            output.setProps({
+                message: { title: 'a different title', message: 'a different message' }
+            });
+            expect(output.find(Modal).prop('title')).to.equal('a different title');
+            expect(output.find(Modal).prop('children')).to.equal('a different message');
+        });
+    });
+
+    describe('no points', () => {
+        it('should not fail', () => {
+            output.setProps({
+                points: [],
+                message: { message: 'loading' }
             });
 
             expect(output.find(LoadingIcon)).to.have.length(1);
