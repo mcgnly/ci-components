@@ -23,7 +23,8 @@ MapHistoryContainerRewireAPI.__Rewire__('HistoryMap', DummyComp);
 function setup() {
     let props = {
         service: { getHistory: getHistoryStub },
-        deviceID: 'history-device-id'
+        deviceID: 'history-device-id',
+        fitMap: () => {}
     };
 
     let wrapper = mount(<MapHistoryContainer {...props}/>);
@@ -71,9 +72,36 @@ describe('widget Map <MapHistory/> container', () => {
         }, 0);
     });
 
-    describe('onload', () => {
+    describe('on mount', () => {
         it('should get the history for the specified id', () => {
             expect(getHistoryStub).to.have.been.calledWith('history-device-id');
+        });
+
+        it('should set points and message to null on success', () => {
+            return wrapper.instance().componentDidMount().then(() => {
+                expect(wrapper.state('message')).to.not.be.defined;
+                expect(wrapper.state('points')).to.deep.equal(dataPointFixture);
+            });
+        });
+
+        it('should set a no points message if the points array is empty', () => {
+            getHistoryStub.returns(new Promise((resolve) => {
+                resolve([]);
+            }));
+            return wrapper.instance().componentDidMount().then(() => {
+                expect(wrapper.state('message').title).to.equal('No device history found');
+                expect(wrapper.state('message').message).to.be.defined;
+            });
+        });
+
+        it('should set a failure message it it fails', () => {
+            getHistoryStub.returns(new Promise((resolve, reject) => {
+                reject([]);
+            }));
+            return wrapper.instance().componentDidMount().then(() => {
+                expect(wrapper.state('message').title).to.equal('Error');
+                expect(wrapper.state('message').message).to.be.defined;
+            });
         });
     });
 

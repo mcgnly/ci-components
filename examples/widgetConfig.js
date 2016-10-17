@@ -8,10 +8,10 @@ export default [
             deviceName: 'loc'
         },
         results: [
-            '62136738-7833-44dc-8929-202cefbaeeb6',
-            'cc1dc38c-f49d-45c6-acfb-de4a72214c06',
-            'af4ba0bf-be7e-45fe-9fd9-5a74ca25db1f',
-            'edd2368f-705f-414c-bfd6-fcb4816a5dae'
+            { id: '62136738-7833-44dc-8929-202cefbaeeb6' },
+            { id: 'cc1dc38c-f49d-45c6-acfb-de4a72214c06' },
+            { id: 'af4ba0bf-be7e-45fe-9fd9-5a74ca25db1f' },
+            { id: 'edd2368f-705f-414c-bfd6-fcb4816a5dae' }
         ]
     },
     {
@@ -35,7 +35,7 @@ export default [
             ]
         },
         results: [
-            '8c8c2244-4c65-446c-9135-847f7d422081'
+            { id: '8c8c2244-4c65-446c-9135-847f7d422081' }
         ]
     },
     {
@@ -59,7 +59,7 @@ export default [
             ]
         },
         results: [
-            '8c8c2244-4c65-446c-9135-847f7d422081'
+            { id: '8c8c2244-4c65-446c-9135-847f7d422081' }
         ]
     },
     {
@@ -83,7 +83,7 @@ export default [
             ]
         },
         results: [
-            '8c8c2244-4c65-446c-9135-847f7d422081'
+            { id: '8c8c2244-4c65-446c-9135-847f7d422081' }
         ]
     },
     {
@@ -96,8 +96,7 @@ export default [
         query: {
             deviceIds: []
         },
-        results: [
-        ]
+        results: []
     },
     {
         type: 'NumericHistory',
@@ -120,7 +119,7 @@ export default [
             ]
         },
         results: [
-            '8c8c2244-4c65-446c-9135-847f7d422081'
+            { id: '8c8c2244-4c65-446c-9135-847f7d422081' }
         ]
     },
     {
@@ -132,10 +131,10 @@ export default [
             deviceName: 'loc'
         },
         results: [
-            '62136738-7833-44dc-8929-202cefbaeeb6',
-            'cc1dc38c-f49d-45c6-acfb-de4a72214c06',
-            'af4ba0bf-be7e-45fe-9fd9-5a74ca25db1f',
-            'edd2368f-705f-414c-bfd6-fcb4816a5dae'
+            { id: '62136738-7833-44dc-8929-202cefbaeeb6' },
+            { id: 'cc1dc38c-f49d-45c6-acfb-de4a72214c06' },
+            { id: 'af4ba0bf-be7e-45fe-9fd9-5a74ca25db1f' },
+            { id: 'edd2368f-705f-414c-bfd6-fcb4816a5dae' }
         ]
     }
 ];

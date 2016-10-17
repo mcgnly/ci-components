@@ -6,8 +6,9 @@ import { Layer, Feature } from 'react-mapbox-gl';
 
 import { sourceOptions } from '../config';
 
-import LoadIcon from '../../icons/loading';
+import LoadingIcon from '../../icons/loading';
 import ControlPanel from '../../components/controlPanel';
+import Modal from '../../components/modal';
 
 import { layoutFactory, paintFactory } from './styleFactory';
 
@@ -15,19 +16,21 @@ const minFilter = {
     filter: ['>=', 'point_count', 2]
 };
 
-export default ({ points, center, popup = {}, height, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn, onRefresh }) => {
-    const features = points.map((c) => (<Feature coordinates={c.coordinates} properties={c.properties} onClick={() => onFeatureClick(c)}/>));
-    let loading = '';
-    if (points.length === 0) {
-        loading = (
+export default ({ points, message: messageObj, center, popup = {}, height, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn, onRefresh}) => {
+    let messageComponent = '';
+    if (messageObj) {
+        const { title, message } = messageObj;
+        messageComponent = (
             <div className="mUCenterFullScreen">
-                <LoadIcon/>
+                { message === 'loading' ? <LoadingIcon/> : <Modal title={title}>{message}</Modal> }
             </div>
         );
     }
+
+    const features = points.map((c) => (<Feature coordinates={c.coordinates} properties={c.properties} onClick={() => onFeatureClick(c)}/>));
     return (
         <div>
-            {loading}
+            {messageComponent}
             <BaseMap
                 center={center}
                 popup={popup}

@@ -3,6 +3,9 @@ import React from 'react';
 import Map from '../components/overview';
 import MapContainer from './mapcontainer';
 
+const noPointsMessage = { title: 'No devices found', message: 'We couldn’t find any devices registered for your account. Please assign the devices you want to have displayed in this dashboard.' };
+const failedPointsMessage = { title: 'Error', message: 'Could not get the location please try again' };
+
 export class MapOverviewContainer extends React.Component {
     constructor(props) {
         super(props);
@@ -11,7 +14,8 @@ export class MapOverviewContainer extends React.Component {
             center: [0, 0],
             popup: {
                 show: false
-            }
+            },
+            message: { message: 'loading' }
         };
 
         const { devices, service } = this.props;
@@ -23,18 +27,23 @@ export class MapOverviewContainer extends React.Component {
     }
 
     componentDidMount() {
-        this.fetchData();
+        return this.fetchData();
     }
 
     fetchData() {
         const { fitMap } = this.props;
-        this.service.getCoordinates().then((points) => {
+        return this.service.getCoordinates().then((points) => {
             const center = points[0] ? points[0].coordinates : [0, 0];
             this.setState({
                 points,
-                center
+                center,
+                message: points.length === 0 ? noPointsMessage : null
             });
             fitMap(points);
+        }, () => {
+            this.setState({
+                message: failedPointsMessage
+            });
         });
     }
 
@@ -61,11 +70,12 @@ export class MapOverviewContainer extends React.Component {
     }
 
     render() {
-        const { points, center, popup, zoom } = this.state;
+        const { points, center, popup, zoom, message } = this.state;
         const { onZoomIn, onZoomOut, onMapLoad, height } = this.props;
         return (
             <Map
                 points={points}
+                message={message}
                 center={center}
                 popup={popup}
                 onMapClick={this.closePopup}

@@ -5,13 +5,23 @@ import HistoryList from '../components/historyList';
 
 import MapContainer from './mapcontainer';
 
+const noPointsMessage = {
+    title: 'No device history found',
+    message: 'We couldn\'t find any historical data for the specified device. Please try again or contact us for assistance.'
+};
+const failedPointsMessage = {
+    title: 'Error',
+    message: 'Could not get the historical location please try again'
+};
+
 export class MapHistoryContainer extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             points:  [],
             center: [0, 0],
-            selectedPoint: {}
+            selectedPoint: {},
+            message: 'loading'
         };
 
         this.service = this.props.service;
@@ -21,17 +31,22 @@ export class MapHistoryContainer extends React.Component {
     }
 
     componentDidMount() {
-        this.fetchData();
+        return this.fetchData();
     }
 
     fetchData() {
         const { deviceID, fitMap } = this.props;
-        this.service.getHistory(deviceID).then((points) => {
+        return this.service.getHistory(deviceID).then((points) => {
             this.setState({
                 points,
-                selectedPoint: points[points.length - 1]
+                selectedPoint: points[points.length - 1],
+                message: points.length === 0 ? noPointsMessage : null
             });
             fitMap(points);
+        }, () => {
+            this.setState({
+                message: failedPointsMessage
+            });
         });
     }
 
@@ -42,7 +57,7 @@ export class MapHistoryContainer extends React.Component {
     }
 
     render() {
-        const { selectedPoint, points, center, popup, zoom } = this.state;
+        const { selectedPoint, points, message, center, popup, zoom } = this.state;
         const { onZoomIn, onZoomOut, onMapLoad, onCloseClick } = this.props;
         return (
             <div className="mOSectionSideBySide">
@@ -59,6 +74,7 @@ export class MapHistoryContainer extends React.Component {
                     onRefresh={this.fetchData}
                 ></HistoryMap>
                 <HistoryList
+                    message={message}
                     onClose={onCloseClick}
                     points={points}
                     selectedPoint={selectedPoint}

@@ -22,7 +22,8 @@ MapOverviewContainerRewireAPI.__Rewire__('Map', DummyComp);
 
 function setup() {
     let props = {
-        service: { getCoordinates: getCoordinatesStub }
+        service: { getCoordinates: getCoordinatesStub },
+        fitMap: () => {}
     };
 
     let wrapper = mount(<MapOverviewContainer {...props}/>);
@@ -53,6 +54,10 @@ describe('widget Map <MapOverviewContainer/> container', () => {
         });
     });
 
+    it('should have default message set to loading', () => {
+        expect(wrapper.state('message')).to.deep.equal({ message: 'loading' });
+    });
+
     describe('on mount', () => {
         it('should get data from the service', () => {
             expect(wrapper.instance().service.getCoordinates).to.have.been.calledOnce;
@@ -64,6 +69,26 @@ describe('widget Map <MapOverviewContainer/> container', () => {
                 coordinates: [1, 1]
             }]);
             expect(wrapper.state('center')).to.deep.equal([1, 1]);
+        });
+
+        it('should set a no points message if the points array is empty', () => {
+            getCoordinatesStub.returns(new Promise((resolve) => {
+                resolve([]);
+            }));
+            return wrapper.instance().componentDidMount().then(() => {
+                expect(wrapper.state('message').title).to.equal('No devices found');
+                expect(wrapper.state('message').message).to.be.defined;
+            });
+        });
+
+        it('should set a failure message it it fails', () => {
+            getCoordinatesStub.returns(new Promise((resolve, reject) => {
+                reject([]);
+            }));
+            return wrapper.instance().componentDidMount().then(() => {
+                expect(wrapper.state('message').title).to.equal('Error');
+                expect(wrapper.state('message').message).to.be.defined;
+            });
         });
     });
 
