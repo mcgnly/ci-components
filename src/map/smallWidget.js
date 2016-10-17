@@ -18,7 +18,7 @@ export default class MapContainer extends React.Component {
     render() {
         return (
             <SmallWidget {...this.props}>
-                <MapOverview {...this.props} height={smallConfig.height} service={this.service} onPopupClick={() => {}}/>
+                <MapOverview {...this.props} hasControlPanel={false} height={smallConfig.height} service={this.service} onPopupClick={() => {}}/>
             </SmallWidget>
         );
     }

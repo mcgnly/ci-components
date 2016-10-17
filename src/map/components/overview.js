@@ -16,7 +16,7 @@ const minFilter = {
     filter: ['>=', 'point_count', 2]
 };
 
-export default ({ points, message: messageObj, center, popup = {}, height, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn, onRefresh}) => {
+export default ({ points, message: messageObj, hasControlPanel = true, center, popup = {}, height, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn, onRefresh }) => {
     let messageComponent = '';
     if (messageObj) {
         const { title, message } = messageObj;
@@ -59,7 +59,7 @@ export default ({ points, message: messageObj, center, popup = {}, height, onFea
                     {features}
                 </Layer>
             </BaseMap>
-            <ControlPanel onRefresh={onRefresh}/>
+            { hasControlPanel ? <ControlPanel onRefresh={onRefresh}/> : '' }
         </div>
     );
 };

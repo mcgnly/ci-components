@@ -5,3 +5,4 @@
 7.10.2016 1.0.5) Bugfix) Should catch exceptions on mqtt unsubscribe
 17.19.2016 1.0.7) Feature Location widget triggers warning modal, on no features and error
 17.19.2016 1.0.8) Feature Location possible to refresh and fetch new points and tracking points
+17.19.2016 1.0.9) Bugfix) Map widget should not have a refresh button
