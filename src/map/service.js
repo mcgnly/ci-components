@@ -7,17 +7,23 @@ export default class CoordinatesService {
         this.deviceIds = devices.map(({ id }) => id);
         this.ajax = Relayr.customAjax({
             uri: ApiURL,
-            token: Relayr.getCurrentUser().token
+            token: 'Bearer UIQRiX4FjBr7Lc7FoKwkcvdMmIT3TrsKwYNc5gxpvhFearjknPfDHUnH0yvOiJNT' //Relayr.getCurrentUser().token
         });
     }
 
     getCoordinates() {
+        const deviceIdsQuery = (this.deviceIds && this.deviceIds.length > 0) ? this.deviceIds : null;
+
+        if (!deviceIdsQuery) {
+            return;
+        }
+
         let statePromise = this.ajax.get('/locations', {
-            queryObj: { deviceIds: this.deviceIds }
+            queryObj: { deviceIds: deviceIdsQuery }
         });
 
         let devicesPromise = Relayr.getCurrentUser().searchForDevices({
-            query: { ids: this.deviceIds }
+            query: { ids: deviceIdsQuery }
         });
 
         return new Promise((resolve, reject) => {
