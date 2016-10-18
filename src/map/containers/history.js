@@ -9,6 +9,7 @@ const noPointsMessage = {
     title: 'No device history found',
     message: 'We couldn\'t find any historical data for the specified device. Please try again or contact us for assistance.'
 };
+
 const failedPointsMessage = {
     title: 'Error',
     message: 'Could not get the historical location please try again'
@@ -21,7 +22,7 @@ export class MapHistoryContainer extends React.Component {
             points:  [],
             center: [0, 0],
             selectedPoint: {},
-            message: 'loading'
+            message: { message: 'loading' }
         };
 
         this.service = this.props.service;
@@ -34,7 +35,7 @@ export class MapHistoryContainer extends React.Component {
         return this.fetchData();
     }
 
-    fetchData() {
+    fetchData({ fitTopMap = true } = {}) {
         const { deviceID, fitMap } = this.props;
         return this.service.getHistory(deviceID).then((points) => {
             this.setState({
@@ -42,7 +43,9 @@ export class MapHistoryContainer extends React.Component {
                 selectedPoint: points[points.length - 1],
                 message: points.length === 0 ? noPointsMessage : null
             });
-            fitMap(points);
+            if (fitTopMap) {
+                fitMap(points);
+            }
         }, () => {
             this.setState({
                 message: failedPointsMessage
@@ -71,7 +74,7 @@ export class MapHistoryContainer extends React.Component {
                     onLoad={onMapLoad}
                     onZoomIn={onZoomIn}
                     onZoomOut={onZoomOut}
-                    onRefresh={this.fetchData}
+                    onRefresh={() => this.fetchData({ fitTopMap: false })}
                 ></HistoryMap>
                 <HistoryList
                     message={message}

@@ -21,7 +21,7 @@ export default class Modal extends React.Component {
         if (this.state.close) {
             return null;
         }
-        const { title = '', children = '', closeMessage = 'Try again' } = this.props;
+        const { title = '', children = '', closeMessage = 'Close' } = this.props;
         return (
             <dialog className="rModal">
                 <article className="rModalContent">

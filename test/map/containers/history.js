@@ -24,7 +24,7 @@ function setup() {
     let props = {
         service: { getHistory: getHistoryStub },
         deviceID: 'history-device-id',
-        fitMap: () => {}
+        fitMap: sinon.spy()
     };
 
     let wrapper = mount(<MapHistoryContainer {...props}/>);
@@ -37,8 +37,11 @@ function setup() {
 
 describe('widget Map <MapHistory/> container', () => {
     let wrapper;
+    let props;
     beforeEach(function() {
-        wrapper = setup().wrapper;
+        const setupObj = setup();
+        wrapper = setupObj.wrapper;
+        props = setupObj.props;
     });
 
     it('should render the <HistoryMap/> component', () => {
@@ -105,15 +108,23 @@ describe('widget Map <MapHistory/> container', () => {
         });
     });
 
-
     describe('on refresh click', () => {
         beforeEach(() => {
             getHistoryStub.reset();
+            getHistoryStub.returns({
+                then: (cb) => cb([])
+            });
         });
 
         it('should get the location for the devices', () => {
             wrapper.find(DummyComp).prop('onRefresh')();
             expect(getHistoryStub).to.have.been.calledOnce;
+        });
+
+        it('should not fit the map', () => {
+            props.fitMap.reset();
+            wrapper.find(DummyComp).prop('onRefresh')();
+            expect(props.fitMap).not.to.have.been.calledOnce;
         });
     });
 });

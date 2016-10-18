@@ -3,22 +3,24 @@ import React from 'react';
 import Map from '../components/overview';
 import MapContainer from './mapcontainer';
 
-const noPointsMessage = { title: 'No devices found', message: 'We couldn’t find any devices registered for your account. Please assign the devices you want to have displayed in this dashboard.' };
+const noDevicesMessage = { title: 'No devices found', message: 'We couldn’t find any devices attached to this dashboard. Please assign the devices you want to have displayed in this dashboard.' };
+const noPointsMessage = { title: 'No location data sent yet', message: 'The devices assigned to this dashboard have not sent any location data yet. Please, make sure they are working and check again later.' };
 const failedPointsMessage = { title: 'Error', message: 'Could not get the location please try again' };
 
 export class MapOverviewContainer extends React.Component {
     constructor(props) {
         super(props);
+        const { devices, service } = this.props;
+
         this.state = {
             points:  [],
             center: [0, 0],
             popup: {
                 show: false
             },
-            message: { message: 'loading' }
+            message: (!devices || devices.length === 0) ? noDevicesMessage : { message: 'loading' }
         };
 
-        const { devices, service } = this.props;
         this.service = service;
 
         this.onFeatureClick = this.onFeatureClick.bind(this);
@@ -30,7 +32,7 @@ export class MapOverviewContainer extends React.Component {
         return this.fetchData();
     }
 
-    fetchData() {
+    fetchData({ fitTopMap = true } = {}) {
         const { fitMap } = this.props;
         return this.service.getCoordinates().then((points) => {
             const center = points[0] ? points[0].coordinates : [0, 0];
@@ -39,7 +41,9 @@ export class MapOverviewContainer extends React.Component {
                 center,
                 message: points.length === 0 ? noPointsMessage : null
             });
-            fitMap(points);
+            if (fitTopMap) {
+                fitMap(points);
+            }
         }, () => {
             this.setState({
                 message: failedPointsMessage
@@ -80,7 +84,7 @@ export class MapOverviewContainer extends React.Component {
                 popup={popup}
                 onMapClick={this.closePopup}
                 onFeatureClick={this.onFeatureClick}
-                onRefresh={this.fetchData}
+                onRefresh={() => this.fetchData({ fitTopMap: false })}
                 onLoad={onMapLoad}
                 {...this.props}
             />

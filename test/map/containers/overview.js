@@ -20,10 +20,11 @@ class DummyComp extends React.Component {
 };
 MapOverviewContainerRewireAPI.__Rewire__('Map', DummyComp);
 
-function setup() {
+function setup(devices = [{ id: 'test-id' }]) {
     let props = {
         service: { getCoordinates: getCoordinatesStub },
-        fitMap: () => {}
+        fitMap: sinon.spy(),
+        devices
     };
 
     let wrapper = mount(<MapOverviewContainer {...props}/>);
@@ -36,8 +37,11 @@ function setup() {
 
 describe('widget Map <MapOverviewContainer/> container', () => {
     let wrapper;
+    let props;
     beforeEach(function() {
-        wrapper = setup().wrapper;
+        const setupObj = setup();
+        wrapper = setupObj.wrapper;
+        props = setupObj.props;
     });
 
     afterEach(() => {
@@ -54,8 +58,17 @@ describe('widget Map <MapOverviewContainer/> container', () => {
         });
     });
 
-    it('should have default message set to loading', () => {
+    it('should have default message set to loading when there is devices to load', () => {
         expect(wrapper.state('message')).to.deep.equal({ message: 'loading' });
+    });
+
+    it('should show no devices messages when there is no devices', () => {
+        wrapper = setup(null).wrapper;
+
+        expect(wrapper.state('message').title).to.deep.equal('No devices found');
+
+        wrapper = setup([]).wrapper;
+        expect(wrapper.state('message').title).to.deep.equal('No devices found');
     });
 
     describe('on mount', () => {
@@ -76,7 +89,7 @@ describe('widget Map <MapOverviewContainer/> container', () => {
                 resolve([]);
             }));
             return wrapper.instance().componentDidMount().then(() => {
-                expect(wrapper.state('message').title).to.equal('No devices found');
+                expect(wrapper.state('message').title).to.equal('No location data sent yet');
                 expect(wrapper.state('message').message).to.be.defined;
             });
         });
@@ -120,11 +133,20 @@ describe('widget Map <MapOverviewContainer/> container', () => {
     describe('on refresh click', () => {
         beforeEach(() => {
             getCoordinatesStub.reset();
+            getCoordinatesStub.returns({
+                then: (cb) => cb([])
+            });
         });
 
         it('should get the location for the devices', () => {
             wrapper.find(DummyComp).prop('onRefresh')();
             expect(getCoordinatesStub).to.have.been.calledOnce;
+        });
+
+        it('should not fit the map', () => {
+            props.fitMap.reset();
+            wrapper.find(DummyComp).prop('onRefresh')();
+            expect(props.fitMap).not.to.have.been.calledOnce;
         });
     });
 
