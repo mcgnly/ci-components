@@ -7,7 +7,7 @@ export default class CoordinatesService {
         this.deviceIds = devices.map(({ id }) => id);
         this.ajax = Relayr.customAjax({
             uri: ApiURL,
-            token: 'Bearer UIQRiX4FjBr7Lc7FoKwkcvdMmIT3TrsKwYNc5gxpvhFearjknPfDHUnH0yvOiJNT' //Relayr.getCurrentUser().token
+            token: Relayr.getCurrentUser().token
         });
     }
 
