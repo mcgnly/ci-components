@@ -19,7 +19,7 @@ export default (props) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {statuses.map((status, i) => <ListItem key={`health-monitor-item-${i}`} {...status} onClick={onLinkClick}/>)}
+                    {statuses.map((status, i) => <ListItem key={`health-monitor-item-${i}`} {...status} onClick={() => onLinkClick(status.status)} status={status.status} />)}
                 </tbody>
             </table>
             <StatusAlert status={overAllStatus}/>
