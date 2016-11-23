@@ -39,6 +39,30 @@ export default [
         ]
     },
     {
+        type: 'Humidity',
+        version: '0.1',
+        config: {
+            readings: [
+                {
+                    path: '',
+                    meaning: 'someMeaning',
+                    valueSchema: {
+                        type: 'number'
+                    }
+                }
+            ]
+        },
+        title: 'Humidity',
+        query: {
+            deviceIds: [
+                '8c8c2244-4c65-446c-9135-847f7d422081'
+            ]
+        },
+        results: [
+            { id: '8c8c2244-4c65-446c-9135-847f7d422081' }
+        ]
+    },
+    {
         type: 'Radial',
         version: '0.1',
         config: {

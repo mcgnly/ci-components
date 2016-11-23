@@ -2,6 +2,7 @@ import React from 'react';
 import Radial from './radial';
 import Percentage from './percentage';
 import Temperature from './temperature';
+import Humidity from './humidity';
 import NumericHistory from './numericHistory';
 import Map from './map';
 import SmallMapWidget from './map/smallWidget';
@@ -12,6 +13,7 @@ const Components = {
     Radial,
     Percentage,
     Temperature,
+    Humidity,
     NumericHistory,
     Map,
     healthMonitor: HealthMonitor,
