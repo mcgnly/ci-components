@@ -51,8 +51,8 @@ describe('healthMonitor widget', () => {
     });
 
     it('should redirect to the corresponding health monitor with the healthMonitorId', () => {
-        wrapper.find(HealthMonitor).prop('onLinkClick')();
-        expect(props.redirectMethod).to.have.been.calledWith('/healthMonitor/test-id');
+        wrapper.find(HealthMonitor).prop('onLinkClick')('offline');
+        expect(props.redirectMethod).to.have.been.calledWith('/healthMonitor/test-id?filter=offline');
     });
 
     describe('on mount', () => {
