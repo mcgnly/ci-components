@@ -40,11 +40,10 @@ describe('component <HealthMonitorComponent/>', () => {
     });
 
     it('should pass status the list item', () => {
-        expect(output.find(HealthMonitorListItem).first().props()).to.deep.equal({
-            onClick: props.onLinkClick,
-            count: 1,
-            status: 'online'
-        });
+        let outputProps = output.find(HealthMonitorListItem).first().props();
+        expect(outputProps.count).to.equal(1);
+        expect(outputProps.status).to.equal('online');
+        expect(typeof outputProps.onClick).to.equal('function');
     });
 
     it('should render an alert status item', () => {
