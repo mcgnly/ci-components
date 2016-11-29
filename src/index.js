@@ -6,6 +6,7 @@ import Percentage from './percentage';
 import Temperature from './temperature';
 import NumericHistory from './numericHistory';
 import Map from './map';
+import Luminosity from './luminosity';
 import SimpleRedirect from './simpleRedirect';
 import HealthMonitor from './healthMonitor';
 import HumanReadbleTimestamp from './time/humanReadable';
@@ -33,6 +34,7 @@ export {
     Percentage,
     Temperature,
     NumericHistory,
+    Luminosity,
     Map,
     MapWidget,
     SimpleRedirect,
