@@ -33,6 +33,13 @@ describe('mqtt Service', () => {
             path: 'fake-path',
             onMessage
         });
+
+        sinon.stub(console, 'error').returns('');
+    });
+
+
+    afterEach(() => {
+        console.error.restore();
     });
 
     describe('#connect', () => {
@@ -115,6 +122,7 @@ describe('mqtt Service', () => {
                 }
             });
         });
+
         it('should unsubscribe for the device', () => {
             service.connect();
             service.disconnect();
@@ -125,9 +133,7 @@ describe('mqtt Service', () => {
         it('if there is no connection it should do nothing', () => {
             deviceMock.connect.returns({
                 then: (cb) => {
-                    cb({
-                        on: connectionMock.on
-                    });
+                    cb(null);
                 }
             });
 
