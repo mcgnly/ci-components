@@ -32,6 +32,14 @@ export default ComposedComponent => class extends React.Component {
         this.fitMap();
     }
 
+    componentWillReceiveProps(nextProps) {
+        const { sizeChanged } = nextProps;
+
+        if (sizeChanged) {
+            document.body.addEventListener('transitionend', () => this.map.resize());
+        }
+    }
+
     zoomIn(map) {
         this.map.setZoom(this.map.getZoom() + 1);
     }

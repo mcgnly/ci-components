@@ -42,6 +42,36 @@ describe('widget higer order map container', () => {
         });
     });
 
+    describe('on componentWillReceiveProps', () => {
+        let resizeSpy;
+        beforeEach(() => {
+            resizeSpy = sinon.spy();
+            wrapper.find(DummyComp).prop('onMapLoad')({ id: 'my-map-instance', fitBounds: () => {}, resize: resizeSpy });
+        });
+
+        it('should resize the map if the size of the container has changed', () => {
+            wrapper.setProps({
+                sizeChanged: true
+            });
+            var event = document.createEvent('Event');
+            event.initEvent('transitionend', true, true);
+            document.body.dispatchEvent(event);
+
+            expect(resizeSpy).to.have.been.calledOnce;
+        });
+
+        it('should not resize the map if the size of the container not has changed', () => {
+            wrapper.setProps({
+                sizeChanged: false
+            });
+            var event = document.createEvent('Event');
+            event.initEvent('transitionend', true, true);
+            document.body.dispatchEvent(event);
+
+            expect(resizeSpy).not.to.have.been.calledOnce;
+        });
+    });
+
     describe('#fitMap', () => {
         it('should wrap on fit to bounds on ', () => {
             const fitBoundsSpy = sinon.spy();
