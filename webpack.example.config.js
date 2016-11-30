@@ -6,6 +6,12 @@ var definePlugin = new webpack.DefinePlugin({
     __PRODUCTION__: true
 });
 
+var optimizePlugin = new webpack.optimize.UglifyJsPlugin({
+  compress: {
+    warnings: false
+  }
+});
+
 module.exports = {
   entry: [
     './examples/index.js'
@@ -16,7 +22,7 @@ module.exports = {
   },
   target: 'web', // in order to ignore built-in modules like path, fs, etc.
   externals: [], // in order to ignore all modules in node_modules folder
-  plugins: [definePlugin],
+  plugins: [definePlugin, optimizePlugin],
   resolve: {
     extensions: ['', '.js'],
     alias: {

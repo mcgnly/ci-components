@@ -14,8 +14,6 @@ export const smallConfig = {
 let apiURL;
 if (__LOCAL__) {
     apiURL = 'api.relayr.io';
-} else if (__DEV__) {
-    apiURL = 'dev-api.relayr.io';
 } else if (__PRODUCTION__) {
     apiURL = 'api.relayr.io';
 }
