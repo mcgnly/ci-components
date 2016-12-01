@@ -3,6 +3,7 @@ import Radial from './radial';
 import Percentage from './percentage';
 import Temperature from './temperature';
 import Humidity from './humidity';
+import Luminosity from './luminosity';
 import NumericHistory from './numericHistory';
 import Map from './map';
 import SmallMapWidget from './map/smallWidget';
@@ -14,6 +15,7 @@ const Components = {
     Percentage,
     Temperature,
     Humidity,
+    Luminosity,
     NumericHistory,
     Map,
     healthMonitor: HealthMonitor,

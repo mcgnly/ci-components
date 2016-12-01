@@ -87,6 +87,30 @@ export default [
         ]
     },
     {
+        type: 'Luminosity',
+        version: '0.1',
+        config: {
+            readings: [
+                {
+                    path: '',
+                    meaning: 'someMeaning',
+                    valueSchema: {
+                        type: 'integer'
+                    }
+                }
+            ]
+        },
+        title: 'Luminosity',
+        query: {
+            deviceIds: [
+                '8c8c2244-4c65-446c-9135-847f7d422081'
+            ]
+        },
+        results: [
+            { id: '8c8c2244-4c65-446c-9135-847f7d422081' }
+        ]
+    },
+    {
         type: 'Percentage',
         version: '0.1',
         config: {

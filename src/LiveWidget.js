@@ -4,8 +4,9 @@ import MQTTService from './service/mqtt.js';
 
 import HumanReadableTimestamp from './time/humanReadable';
 import WidgetHeader from './components/header';
+import WidgetSizes from './widgetSizes';
 
-export default ComposedComponent => class extends React.Component {
+export default (ComposedComponent, widgetSize = WidgetSizes.small) => class extends React.Component {
     constructor(props) {
         super(props);
         const { readings = [], devices = [] } = props;
@@ -54,7 +55,7 @@ export default ComposedComponent => class extends React.Component {
             <li className="rBox rUtilityResetListItem mOWidgetBox">
                 <WidgetHeader {...this.props}/>
                 <div className="rBoxBody">
-                    <div className="mOSmallWidget">
+                    <div className={widgetSize.wrappingClass}>
                         <ComposedComponent {...this.props} state={this.state}/>
                     </div>
                 </div>
