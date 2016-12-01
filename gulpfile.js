@@ -7,7 +7,7 @@ wrench.readdirSyncRecursive('./gulp').filter(function (file) {
     require('./gulp/' + file);
 });
 
-gulp.task('build', ['less', 'assets', 'webpack:prod']);
+gulp.task('build', ['less', 'assets', 'webpack:local']);
 gulp.task('build:example', ['less', 'assets', 'webpack:example', 'uncache:local']);
 gulp.task('build:local', ['less', 'assets', 'webpack:local', 'uncache:local']);
 

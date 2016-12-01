@@ -3,6 +3,7 @@ import Radial from './radial';
 import Percentage from './percentage';
 import Temperature from './temperature';
 import Humidity from './humidity';
+import Boolean from './boolean';
 import Luminosity from './luminosity';
 import NumericHistory from './numericHistory';
 import Map from './map';
@@ -15,6 +16,7 @@ const Components = {
     Percentage,
     Temperature,
     Humidity,
+    Boolean,
     Luminosity,
     NumericHistory,
     Map,
