@@ -34,7 +34,7 @@ export default class MqttService {
 
             if (reading) {
                 cb({
-                    value: parseInt(reading.value, 10),
+                    value: reading.value,
                     lastMessage: new Date()
                 });
             }
