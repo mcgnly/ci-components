@@ -33,9 +33,8 @@ export default class MqttService {
             });
 
             if (reading) {
-                const intValue = parseInt(reading.value, 10);
                 cb({
-                    value: (isNaN(intValue) ? reading.value : intValue),
+                    value: reading.value,
                     lastMessage: new Date()
                 });
             }
