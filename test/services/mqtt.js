@@ -88,6 +88,18 @@ describe('mqtt Service', () => {
 
                 expect(onMessage).not.to.have.been.calledWith(42);
             });
+
+            it('should not modify the reading value before sending it to the callback (boolean)', () => {
+                readings = [{ meaning: 'fake-meaning', path: 'fake-path', value: true }];
+                service.connect();
+                expect(onMessage.firstCall.args[0].value).to.equal(true);
+            });
+            
+            it('should not modify the reading value before sending it to the callback (number)', () => {
+                readings = [{ meaning: 'fake-meaning', path: 'fake-path', value: 2.45 }];
+                service.connect();
+                expect(onMessage.firstCall.args[0].value).to.equal(2.45);
+            });
         });
 
         describe('it should handle rejected promise', () => {
