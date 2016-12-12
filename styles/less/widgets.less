@@ -30,4 +30,26 @@
 
 .mOWidgetBox {
     vertical-align: top;
+
+    .mOWidgetBoxBody {
+        padding-bottom: 15px !important;
+    }
+}
+
+.rDropdownMenuOpen .rDropdownMenuBGScreen {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+}
+
+.rDropdownMenuOpen .rDropdownMenuButton {
+    z-index: 2;
+    position: relative;
+}
+
+.rDropdownMenuButtonNoCaret::after {
+    content: '' !important; 
 }
