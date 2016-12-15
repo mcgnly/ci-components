@@ -52,11 +52,9 @@ export default (ComposedComponent, widgetSize = WidgetSizes.small) => class exte
     render() {
         const { title, onSettings } = this.props;
         const { lastMessage } = this.state;
-        const links  = [
-            { name: 'Link 1', address: 'link1' },
-            { name: 'Another Awesome(...)', address: 'another-awesome-link' },
-            { name: 'Twitter', address: 'http://twitter.com' }
-        ];
+        const hasLinks = 'config' in this.props.widget && 
+                         'links' in this.props.widget.config &&
+                         this.props.widget.config.links.length > 0;
         return (
             <li className="rBox rUtilityResetListItem mOWidgetBox">
                 <WidgetHeader {...this.props}/>
@@ -64,7 +62,7 @@ export default (ComposedComponent, widgetSize = WidgetSizes.small) => class exte
                     <div className={widgetSize.wrappingClass}>
                         <ComposedComponent {...this.props} state={this.state}/>
                     </div>
-                    <WidgetLinkMenu links={links}/>
+                    { hasLinks && <WidgetLinkMenu links={this.props.widget.config.links}/> }
                 </div>
             </li>
         );
