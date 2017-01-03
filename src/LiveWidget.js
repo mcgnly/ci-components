@@ -52,8 +52,9 @@ export default (ComposedComponent, widgetSize = WidgetSizes.small) => class exte
     render() {
         const { title, onSettings } = this.props;
         const { lastMessage } = this.state;
-        const hasLinks = 'config' in this.props.widget && 
-                         'links' in this.props.widget.config &&
+        const { widget = {} } = this.props;
+        const hasLinks = 'config' in widget &&
+                         'links' in widget.config &&
                          this.props.widget.config.links.length > 0;
         return (
             <li className="rBox rUtilityResetListItem mOWidgetBox">
