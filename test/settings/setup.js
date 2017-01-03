@@ -6,4 +6,4 @@ global.navigator = window.navigator;
 
 //SET BUILD CONFIG TO LOCAL
 global.__LOCAL__ = true;
-global.__DEV___ = false;
+global.__PRODUCTION__ = false;
