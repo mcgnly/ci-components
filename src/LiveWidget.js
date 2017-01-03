@@ -5,6 +5,7 @@ import MQTTService from './service/mqtt.js';
 import HumanReadableTimestamp from './time/humanReadable';
 import WidgetHeader from './components/header';
 import WidgetSizes from './widgetSizes';
+import WidgetLinkMenu from './components/widgetLinkMenu';
 
 export default (ComposedComponent, widgetSize = WidgetSizes.small) => class extends React.Component {
     constructor(props) {
@@ -51,13 +52,18 @@ export default (ComposedComponent, widgetSize = WidgetSizes.small) => class exte
     render() {
         const { title, onSettings } = this.props;
         const { lastMessage } = this.state;
+        const { widget = {} } = this.props;
+        const hasLinks = 'config' in widget &&
+                         'links' in widget.config &&
+                         this.props.widget.config.links.length > 0;
         return (
             <li className="rBox rUtilityResetListItem mOWidgetBox">
                 <WidgetHeader {...this.props}/>
-                <div className="rBoxBody">
+                <div className="rBoxBody mOWidgetBoxBody">
                     <div className={widgetSize.wrappingClass}>
                         <ComposedComponent {...this.props} state={this.state}/>
                     </div>
+                    { hasLinks && <WidgetLinkMenu links={this.props.widget.config.links}/> }
                 </div>
             </li>
         );
