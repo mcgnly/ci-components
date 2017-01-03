@@ -159,6 +159,34 @@ export default [
         ]
     },
     {
+        type: 'Percentage',
+        version: '0.1',
+        config: {
+            readings: [
+                {
+                    path: '',
+                    meaning: 'someMeaning',
+                    valueSchema: {
+                        type: 'integer'
+                    }
+                }
+            ],
+            links: [
+                { name: 'link', address: 'http://example.com' },
+                { name: 'link-2', address: 'http://test-2.example.com' }
+            ]
+        },
+        title: 'Percentage with links',
+        query: {
+            deviceIds: [
+                '8c8c2244-4c65-446c-9135-847f7d422081'
+            ]
+        },
+        results: [
+            { id: '8c8c2244-4c65-446c-9135-847f7d422081' }
+        ]
+    },
+    {
         type: 'healthMonitor',
         version: '0.1',
         config: {
