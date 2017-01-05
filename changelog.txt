@@ -6,5 +6,6 @@
 17.10.2016 1.0.7) Feature Location widget triggers warning modal, on no features and error
 17.10.2016 1.0.8) Feature Location possible to refresh and fetch new points and tracking points
 17.10.2016 1.0.9) Bugfix) Map widget should not have a refresh button
-29.11.2016 1.0.10) Bugfix/Feature) Added humidity widget, and map resizes on sizeChanged 
+29.11.2016 1.0.10) Bugfix/Feature) Added humidity widget, and map resizes on sizeChanged
 01.12.2016 1.0.11) Feature) Added Luminosity and Boolean widgets
+05.01.2017 1.0.12) Feature) Widgets with dropdown with the links for custom widgets
