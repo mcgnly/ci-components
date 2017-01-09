@@ -52,6 +52,29 @@ describe('component <MapOverviewComponent/>', () => {
     });
 
     describe('message', () => {
+        describe('do not show modals', () => {
+            beforeEach(() => {
+                output.setProps({
+                    showModals: false,
+                });
+            });
+
+            it('should not render any message if', () => {
+                output.setProps({
+                    message: { message: 'loading' }
+                });
+
+                expect(output.find(LoadingIcon)).to.have.length(0);
+            });
+
+            it('should not render a message container', () => {
+                output.setProps({
+                    message: { title: 'a different title', message: 'a different message' }
+                });
+                expect(output.find(Modal)).to.have.length(0);
+            });
+        });
+
         it('should render a loading icon if the message is loading been provided', () => {
             output.setProps({
                 message: { message: 'loading' }

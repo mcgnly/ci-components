@@ -33,8 +33,13 @@ describe('widget small Map', () => {
         it('should pass the services', () => {
             expect(output.find(MapOverview).prop('service')).to.be.an.instanceof(Service);
         });
+
         it('should pass height', () => {
             expect(output.find(MapOverview).prop('height')).to.equal(smallConfig.height);
+        });
+
+        it('should turn off modals', () => {
+            expect(output.find(MapOverview).prop('showModals')).to.be.false;
         });
     });
 
@@ -42,5 +47,6 @@ describe('widget small Map', () => {
         it('should be rendered', () => {
             expect(output.find(SmallWidgetComponent)).to.have.length(1);
         });
+
     });
 });

@@ -16,15 +16,11 @@ const minFilter = {
     filter: ['>=', 'point_count', 2]
 };
 
-export default ({ points, message: messageObj, hasControlPanel = true, center, popup = {}, height, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn, onRefresh }) => {
+export default ({ points, message: messageObj, showModals = true, hasControlPanel = true, center, popup = {}, height, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn, onRefresh }) => {
     let messageComponent = '';
-    if (messageObj) {
+    if (showModals && messageObj && messageObj.message) {
         const { title, message } = messageObj;
-        messageComponent = (
-            <div className="mUCenterFullScreen">
-                { message === 'loading' ? <LoadingIcon/> : <Modal title={title}>{message}</Modal> }
-            </div>
-        );
+        messageComponent = message === 'loading' ? (<div className="mUCenterFullScreen"><LoadingIcon/></div>) : <Modal title={title}>{message}</Modal>;
     }
 
     const features = points.map((c) => (<Feature coordinates={c.coordinates} properties={c.properties} onClick={() => onFeatureClick(c)}/>));
