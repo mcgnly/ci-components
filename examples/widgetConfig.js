@@ -1,20 +1,5 @@
 export default [
     {
-        type: 'MapWidget',
-        version: '0.1',
-        config: {},
-        title: 'Location widget',
-        query: {
-            deviceName: 'loc'
-        },
-        results: [
-            { id: '62136738-7833-44dc-8929-202cefbaeeb6' },
-            { id: 'cc1dc38c-f49d-45c6-acfb-de4a72214c06' },
-            { id: 'af4ba0bf-be7e-45fe-9fd9-5a74ca25db1f' },
-            { id: 'edd2368f-705f-414c-bfd6-fcb4816a5dae' }
-        ]
-    },
-    {
         type: 'Temperature',
         version: '0.1',
         config: {
@@ -159,7 +144,32 @@ export default [
         ]
     },
     {
+        type: 'Number',
+        title: 'Number',
+        version: '0.1',
+        config: {
+            readings: [
+                {
+                    path: '',
+                    meaning: 'someMeaning',
+                    valueSchema: {
+                        type: 'number'
+                    }
+                }
+            ]
+        },
+        query: {
+            deviceIds: [
+                '8c8c2244-4c65-446c-9135-847f7d422081'
+            ]
+        },
+        results: [
+            { id: '8c8c2244-4c65-446c-9135-847f7d422081' }
+        ]
+    },
+    {
         type: 'Percentage',
+        title: 'Percentage with links',
         version: '0.1',
         config: {
             readings: [
@@ -176,7 +186,6 @@ export default [
                 { name: 'link-2', address: 'http://test-2.example.com' }
             ]
         },
-        title: 'Percentage with links',
         query: {
             deviceIds: [
                 '8c8c2244-4c65-446c-9135-847f7d422081'
@@ -220,6 +229,21 @@ export default [
         },
         results: [
             { id: '8c8c2244-4c65-446c-9135-847f7d422081' }
+        ]
+    },
+    {
+        type: 'MapWidget',
+        version: '0.1',
+        config: {},
+        title: 'MapWidget',
+        query: {
+            deviceName: 'loc'
+        },
+        results: [
+            { id: '62136738-7833-44dc-8929-202cefbaeeb6' },
+            { id: 'cc1dc38c-f49d-45c6-acfb-de4a72214c06' },
+            { id: 'af4ba0bf-be7e-45fe-9fd9-5a74ca25db1f' },
+            { id: 'edd2368f-705f-414c-bfd6-fcb4816a5dae' }
         ]
     },
     {

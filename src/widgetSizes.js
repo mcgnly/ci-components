@@ -4,5 +4,8 @@ export default Object.freeze({
     },
     medium: {
         wrappingClass: 'mOMediumWidget'
+    },
+    large: {
+        wrappingClass: 'mOLargeWidget'
     }
 });

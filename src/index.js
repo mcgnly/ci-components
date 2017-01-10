@@ -3,6 +3,7 @@ import React from 'react';
 import WidgetComponent from './widgetComponent';
 import Radial from './radial';
 import Percentage from './percentage';
+import Number from './number';
 import Temperature from './temperature';
 import NumericHistory from './numericHistory';
 import Map from './map';
@@ -33,6 +34,7 @@ export {
     WidgetComponent,
     Radial,
     Percentage,
+    Number,
     Temperature,
     NumericHistory,
     Luminosity,
