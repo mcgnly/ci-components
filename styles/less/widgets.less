@@ -1,10 +1,12 @@
 @import 'node_modules/relayr-sensor-illustrations/styles/less/main.less';
 
-@mSmallWidgetWidth: 100px;
-@mSmallWidgetHeight: 120px;
-@mMediumWidgetWidth: 200px;
+@mSmallWidgetWidth:   100px;
+@mSmallWidgetHeight:  120px;
+@mMediumWidgetWidth:  200px;
 @mMediumWidgetHeight: 120px;
-@mWigetFullMinWidth: 500px;
+@mLargeWidgetWidth:   300px;
+@mLargeWidgetHeight:  120px;
+@mWigetFullMinWidth:  500px;
 
 .mOSmallWidget {
     width: @mSmallWidgetWidth;
@@ -18,6 +20,13 @@
     height:  @mMediumWidgetHeight;
     margin: auto;
     vertical-align: top;
+}
+
+.mOLargeWidget {
+    width: @mLargeWidgetWidth;
+    height: @mLargeWidgetHeight;
+    margin: auto;
+    vertical-align: middle;
 }
 
 .mOFullWidget {
@@ -34,6 +43,11 @@
     .mOWidgetBoxBody {
         padding-bottom: 15px !important;
     }
+}
+
+.mONumberWidget {
+    font-size: 50px;
+    line-height: 120px; /* centers text vertically within widget */
 }
 
 .rDropdownMenuOpen .rDropdownMenuBGScreen {

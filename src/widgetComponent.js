@@ -1,6 +1,7 @@
 import React from 'react';
 import Radial from './radial';
 import Percentage from './percentage';
+import Number from './number';
 import Temperature from './temperature';
 import Humidity from './humidity';
 import Boolean from './boolean';
@@ -14,6 +15,7 @@ import HealthMonitor from './healthMonitor';
 const Components = {
     Radial,
     Percentage,
+    Number,
     Temperature,
     Humidity,
     Boolean,
