@@ -25,7 +25,8 @@ module.exports = {
   resolve: {
     extensions: ['', '.js'],
     alias: {
-        'webworkify': 'webworkify-webpack'
+        'webworkify': 'webworkify-webpack',
+        'gl-matrix': path.resolve('./node_modules/gl-matrix/dist/gl-matrix.js')
     }
   },
   module: {
@@ -43,6 +44,12 @@ module.exports = {
     }, {
         test: /\.json$/,
         loader: 'json-loader'
+    }],
+
+    postLoaders: [{
+      include: /node_modules\/mapbox-gl/,
+      loader: 'transform-loader',
+      query: 'brfs',
     }]
   }
 };
