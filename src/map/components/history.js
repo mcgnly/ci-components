@@ -7,7 +7,19 @@ import { Layer, Feature } from 'react-mapbox-gl';
 
 import { layoutFactory, paintFactory } from './styleFactory';
 
-export default ({ points, selectedPoint = { coordinates: [] }, center, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn, onRefresh }) => {
+export default ({
+    points,
+    selectedPoint = { coordinates: [] },
+    center,
+    hasControlPanel = true,
+    onFeatureClick,
+    onMapClick,
+    onLoad,
+    onZoomOut,
+    onZoomIn,
+    onRefresh,
+    onSettingsClick
+}) => {
     const features = points.filter((p) => p !== selectedPoint).map(c => (<Feature coordinates={c.coordinates || []} properties={c.properties} onClick={() => onFeatureClick(c)}/>));
     const route = points.map((c) => c.coordinates);
     const selectedCoordinates = selectedPoint.coordinates;
@@ -40,7 +52,7 @@ export default ({ points, selectedPoint = { coordinates: [] }, center, onFeature
                    <Feature coordinates={selectedCoordinates}/>
                </Layer>
             </BaseMap>
-            <ControlPanel onRefresh={onRefresh}/>
+            { hasControlPanel ? <ControlPanel onRefresh={onRefresh} onAdd={() => onSettingsClick('add')} onRemove={() => onSettingsClick('remove')} /> : '' }
         </div>
     );
 };

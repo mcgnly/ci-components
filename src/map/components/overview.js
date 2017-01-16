@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import BaseMap from './basemap';
 
@@ -16,14 +16,46 @@ const minFilter = {
     filter: ['>=', 'point_count', 2]
 };
 
-export default ({ points, message: messageObj, showModals = true, hasControlPanel = true, center, popup = {}, height, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn, onRefresh }) => {
+MapOverview.propTypes = {
+    points: PropTypes.array.isRequired,
+    message: PropTypes.object,
+    showModals: PropTypes.bool,
+    hasControlPanel: PropTypes.bool,
+    center: PropTypes.array,
+    popup: PropTypes.object,
+    height: PropTypes.string,
+    onFeatureClick: PropTypes.func,
+    onMapClick: PropTypes.func,
+    onLoad: PropTypes.func,
+    onZoomIn: PropTypes.func,
+    onZoomOut: PropTypes.func,
+    onRefresh: PropTypes.func,
+    onSettingsClick: PropTypes.func
+};
+
+export default function MapOverview({
+    points,
+    message: messageObj,
+    showModals = true,
+    hasControlPanel = true,
+    center,
+    popup = {},
+    height,
+    onFeatureClick,
+    onMapClick,
+    onLoad,
+    onZoomOut,
+    onZoomIn,
+    onRefresh,
+    onSettingsClick
+}) {
     let messageComponent = '';
     if (showModals && messageObj && messageObj.message) {
         const { title, message } = messageObj;
         messageComponent = message === 'loading' ? (<div className="mUCenterFullScreen"><LoadingIcon/></div>) : <Modal title={title}>{message}</Modal>;
     }
 
-    const features = points.map((c) => (<Feature coordinates={c.coordinates} properties={c.properties} onClick={() => onFeatureClick(c)}/>));
+    const features = points.map((c) => (<Feature key={`feature-coordinate-${c.coordinates}`} coordinates={c.coordinates} properties={c.properties} onClick={() => onFeatureClick(c)}/>));
     return (
         <div>
             {messageComponent}
@@ -55,7 +87,7 @@ export default ({ points, message: messageObj, showModals = true, hasControlPane
                     {features}
                 </Layer>
             </BaseMap>
-            { hasControlPanel ? <ControlPanel onRefresh={onRefresh}/> : '' }
+            { hasControlPanel ? <ControlPanel onRefresh={onRefresh} onAdd={() => onSettingsClick('add')} onRemove={() => onSettingsClick('remove')} /> : '' }
         </div>
     );
 };

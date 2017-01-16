@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
-export default ({ onRefresh = () => {} }) =>
-    <div className="rSectionHeaderBreadcrumb">
-        <div></div>
-        <div className="rSectionHeaderElement mWCControl">
-            <i className="fa fa-refresh mQaRefresh mWCControlItem" onClick={onRefresh}></i>
+
+ControlPanel.propTypes = {
+    onRefresh: PropTypes.func,
+    onAdd: PropTypes.func,
+    onRemove: PropTypes.func
+};
+
+export default function ControlPanel({ onRefresh = () => {}, onAdd = () => {}, onRemove = () => {} }) {
+    return (
+        <div className="rSectionHeaderBreadcrumb">
+            <div></div>
+            <div className="rSectionHeaderElement mWCControl">
+                <i className="fa fa-trash mQaControlPanelRemove mWCControlItem" onClick={onRemove}></i>
+                <i className="fa fa-refresh mQaControlPanelRefresh mWCControlItem" onClick={onRefresh}></i>
+                <i className="fa fa-plus mQaControlPanelAdd mWCControlItem" onClick={onAdd}></i>
+            </div>
         </div>
-    </div>
-;
+    );
+};

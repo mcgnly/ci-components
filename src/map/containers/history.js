@@ -75,6 +75,7 @@ export class MapHistoryContainer extends React.Component {
                     onZoomIn={onZoomIn}
                     onZoomOut={onZoomOut}
                     onRefresh={() => this.fetchData({ fitTopMap: false })}
+                    {...this.props}
                 ></HistoryMap>
                 <HistoryList
                     message={message}
