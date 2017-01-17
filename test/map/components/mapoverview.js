@@ -28,7 +28,8 @@ function setup() {
         onLoad: sinon.spy(),
         onZoomIn: sinon.spy(),
         onZoomOut: sinon.spy(),
-        onSettingsClick: sinon.spy()
+        onSettingsClick: sinon.spy(),
+        widget: { id: 'widget-id' }
     };
 
     let output = shallow(<MapOverviewComponent {...props}/>);
@@ -174,12 +175,12 @@ describe('component <MapOverviewComponent/>', () => {
 
         it('should call #onSettingsClick with add #onAdd', () => {
             output.find(ControlPanel).prop('onAdd')();
-            expect(props.onSettingsClick).to.have.been.calledWith('add');
+            expect(props.onSettingsClick).to.have.been.calledWith(props.widget, 'add');
         });
 
         it('should call #onSettingsClick with remove #onRemove', () => {
             output.find(ControlPanel).prop('onRemove')();
-            expect(props.onSettingsClick).to.have.been.calledWith('remove');
+            expect(props.onSettingsClick).to.have.been.calledWith(props.widget, 'remove');
         });
     });
 

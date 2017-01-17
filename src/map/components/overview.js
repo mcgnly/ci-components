@@ -24,6 +24,7 @@ MapOverview.propTypes = {
     center: PropTypes.array,
     popup: PropTypes.object,
     height: PropTypes.string,
+    widget: PropTypes.object,
     onFeatureClick: PropTypes.func,
     onMapClick: PropTypes.func,
     onLoad: PropTypes.func,
@@ -41,6 +42,7 @@ export default function MapOverview({
     center,
     popup = {},
     height,
+    widget,
     onFeatureClick,
     onMapClick,
     onLoad,
@@ -87,7 +89,7 @@ export default function MapOverview({
                     {features}
                 </Layer>
             </BaseMap>
-            { hasControlPanel ? <ControlPanel onRefresh={onRefresh} onAdd={() => onSettingsClick('add')} onRemove={() => onSettingsClick('remove')} /> : '' }
+            { hasControlPanel ? <ControlPanel onRefresh={onRefresh} onAdd={() => onSettingsClick(widget, 'add')} onRemove={() => onSettingsClick(widget, 'remove')} /> : '' }
         </div>
     );
 };

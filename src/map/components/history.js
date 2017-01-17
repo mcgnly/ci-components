@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import BaseMap from './basemap';
 import ControlPanel from '../../components/controlPanel';
@@ -7,7 +7,22 @@ import { Layer, Feature } from 'react-mapbox-gl';
 
 import { layoutFactory, paintFactory } from './styleFactory';
 
-export default ({
+MapHistory.propTypes = {
+    points: PropTypes.array.isRequired,
+    selectedPoint: PropTypes.object,
+    center: PropTypes.array,
+    hasControlPanel: PropTypes.bool,
+    onFeatureClick: PropTypes.func,
+    onMapClick: PropTypes.func,
+    onLoad: PropTypes.func,
+    onZoomIn: PropTypes.func,
+    onZoomOut: PropTypes.func,
+    onRefresh: PropTypes.func,
+    onSettingsClick: PropTypes.func,
+    widget: PropTypes.object
+};
+
+export default function MapHistory({
     points,
     selectedPoint = { coordinates: [] },
     center,
@@ -18,8 +33,9 @@ export default ({
     onZoomOut,
     onZoomIn,
     onRefresh,
-    onSettingsClick
-}) => {
+    onSettingsClick,
+    widget
+}) {
     const features = points.filter((p) => p !== selectedPoint).map(c => (<Feature coordinates={c.coordinates || []} properties={c.properties} onClick={() => onFeatureClick(c)}/>));
     const route = points.map((c) => c.coordinates);
     const selectedCoordinates = selectedPoint.coordinates;
@@ -52,7 +68,7 @@ export default ({
                    <Feature coordinates={selectedCoordinates}/>
                </Layer>
             </BaseMap>
-            { hasControlPanel ? <ControlPanel onRefresh={onRefresh} onAdd={() => onSettingsClick('add')} onRemove={() => onSettingsClick('remove')} /> : '' }
+            { hasControlPanel ? <ControlPanel onRefresh={onRefresh} onAdd={() => onSettingsClick(widget, 'add')} onRemove={() => onSettingsClick(widget, 'remove')} /> : '' }
         </div>
     );
 };
