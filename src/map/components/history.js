@@ -68,7 +68,7 @@ export default function MapHistory({
                    <Feature coordinates={selectedCoordinates}/>
                </Layer>
             </BaseMap>
-            { hasControlPanel ? <ControlPanel onRefresh={onRefresh} onAdd={() => onSettingsClick(widget, 'add')} onRemove={() => onSettingsClick(widget, 'remove')} /> : '' }
+            { hasControlPanel ? <ControlPanel onRefresh={onRefresh} onAdd={() => onSettingsClick(widget, 'add')}/> : '' }
         </div>
     );
 };

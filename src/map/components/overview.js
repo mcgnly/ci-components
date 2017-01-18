@@ -89,7 +89,7 @@ export default function MapOverview({
                     {features}
                 </Layer>
             </BaseMap>
-            { hasControlPanel ? <ControlPanel onRefresh={onRefresh} onAdd={() => onSettingsClick(widget, 'add')} onRemove={() => onSettingsClick(widget, 'remove')} /> : '' }
+            { hasControlPanel ? <ControlPanel onRefresh={onRefresh} onAdd={() => onSettingsClick(widget, 'add')} /> : '' }
         </div>
     );
 };

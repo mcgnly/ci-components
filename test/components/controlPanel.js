@@ -43,13 +43,6 @@ describe('component <ControlPanel/>', () => {
         });
     });
 
-    describe('remove', () => {
-        it('should trigger onRemove on refresh click', () => {
-            output.find('.mQaControlPanelRemove').simulate('click');
-            expect(props.onRemove).to.have.been.calledOnce;
-        });
-    });
-
     describe('add', () => {
         it('should trigger onAdd on refresh click', () => {
             output.find('.mQaControlPanelAdd').simulate('click');

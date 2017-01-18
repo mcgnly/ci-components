@@ -107,11 +107,6 @@ describe('component <MapHistoryComponent/>', () => {
             output.find(ControlPanel).prop('onAdd')();
             expect(props.onSettingsClick).to.have.been.calledWith(props.widget, 'add');
         });
-
-        it('should call #onSettingsClick with remove #onRemove', () => {
-            output.find(ControlPanel).prop('onRemove')();
-            expect(props.onSettingsClick).to.have.been.calledWith(props.widget, 'remove');
-        });
     });
 
 });

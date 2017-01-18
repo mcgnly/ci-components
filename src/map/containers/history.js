@@ -53,6 +53,18 @@ export class MapHistoryContainer extends React.Component {
         });
     }
 
+    componentWillReceiveProps(nextProps) {
+        const { deviceID: newDeviceID, service: newService } = nextProps;
+        const { deviceID: oldDeviceID, service: oldService } = this.props;
+        if (newService !== oldService) {
+            console.log('update service');
+            this.service = newService;
+        }
+        if (newDeviceID !== oldDeviceID) {
+            return this.fetchData();
+        }
+    }
+
     onSelectItem(point) {
         this.setState({
             selectedPoint: point

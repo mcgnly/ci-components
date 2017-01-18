@@ -15,7 +15,9 @@ export default class CoordinatesService {
         const deviceIdsQuery = (this.deviceIds && this.deviceIds.length > 0) ? this.deviceIds : null;
 
         if (!deviceIdsQuery) {
-            return;
+            return new Promise((resolve, reject) => {
+                resolve([]);
+            });
         }
 
         let statePromise = this.ajax.get('/locations', {
