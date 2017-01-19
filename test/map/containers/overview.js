@@ -105,6 +105,37 @@ describe('widget Map <MapOverviewContainer/> container', () => {
         });
     });
 
+    describe('#componentWillReceiveProps', () => {
+        beforeEach(() => {
+            getCoordinatesStub.reset();
+        });
+
+        it('should update the service if a new service is provided', () => {
+            const newDummyService = {
+                getCoordinates: sinon.stub().returns({ then: () => {} })
+            };
+            wrapper.setProps({
+                devices: [{ id: 'a-different-id' }],
+                service: newDummyService
+            });
+            expect(newDummyService.getCoordinates).to.have.been.calledOnce;
+        });
+
+        it('should fetch data if the devices changes', () => {
+            wrapper.setProps({
+                devices: [{ id: 'a-different-id' }]
+            });
+            expect(getCoordinatesStub).to.have.been.calledOnce;
+        });
+
+        it('should not fetch data if the devices does not changes', () => {
+            wrapper.setProps({
+                devices: [{ id: 'test-id' }]
+            });
+            expect(getCoordinatesStub).not.to.have.been.calledOnce;
+        });
+    });
+
     describe('on feature click', () => {
         it('should show popup with title and link', () => {
             wrapper.find(DummyComp).prop('onFeatureClick')({

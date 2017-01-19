@@ -57,7 +57,6 @@ export class MapHistoryContainer extends React.Component {
         const { deviceID: newDeviceID, service: newService } = nextProps;
         const { deviceID: oldDeviceID, service: oldService } = this.props;
         if (newService !== oldService) {
-            console.log('update service');
             this.service = newService;
         }
         if (newDeviceID !== oldDeviceID) {
