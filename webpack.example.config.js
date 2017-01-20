@@ -26,8 +26,8 @@ module.exports = {
   resolve: {
     extensions: ['', '.js'],
     alias: {
-        react: path.resolve('./node_modules/react'),
-        webworkify: 'webworkify-webpack'
+        webworkify: 'webworkify-webpack',
+        'gl-matrix': path.resolve('./node_modules/gl-matrix/dist/gl-matrix.js')
     }
   },
   devtool: 'source-map',
@@ -40,15 +40,11 @@ module.exports = {
     },  {
         test: /\.json$/,
         loader: 'json-loader'
-     }, {
-        test: /\.js$/,
-        include: path.resolve('node_modules/mapbox-gl-shaders/index.js'),
-        loader: 'transform/cacheable?brfs'
      }],
      postLoaders: [{
-        include: /node_modules\/mapbox-gl-shaders/,
-        loader: 'transform',
-        query: 'brfs'
-    }]
+       include: /node_modules\/mapbox-gl/,
+       loader: 'transform-loader',
+       query: 'brfs',
+     }]
   }
 };
