@@ -8,7 +8,9 @@ class PercentageWidget extends React.Component {
     render() {
         const { state, title } = this.props;
         return (
-            <Percentage value={state.reading} min={0} max={100} title={title}></Percentage>
+            <div className="mOWidgetSimpleText">
+                <Percentage value={state.reading} min={0} max={100} title={title}></Percentage>
+            </div>
         );
     }
 }

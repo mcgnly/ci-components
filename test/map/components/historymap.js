@@ -23,8 +23,10 @@ function setup() {
         ],
         selectedPoint,
         onFeatureClick: sinon.spy(),
+        onSettingsClick: sinon.spy(),
         onZoomIn: sinon.spy(),
-        onZoomOut: sinon.spy()
+        onZoomOut: sinon.spy(),
+        widget: { id: 'my-widget-id' }
     };
 
     let output = shallow(<MapHistoryComponent {...props}/>);
@@ -99,6 +101,11 @@ describe('component <MapHistoryComponent/>', () => {
 
         it('should pass props to the control panel', () => {
             expect(output.find(ControlPanel).prop('onRefresh')).to.equal(props.onRefresh);
+        });
+
+        it('should call #onSettingsClick with add #onAdd', () => {
+            output.find(ControlPanel).prop('onAdd')();
+            expect(props.onSettingsClick).to.have.been.calledWith(props.widget, 'add');
         });
     });
 

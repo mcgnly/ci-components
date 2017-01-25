@@ -14,7 +14,9 @@ import ControlPanel from '../../src/components/controlPanel';
 
 function setup() {
     let props = {
-        onRefresh: sinon.spy()
+        onRefresh: sinon.spy(),
+        onAdd: sinon.spy(),
+        onRemove: sinon.spy()
     };
 
     let output = shallow(<ControlPanel {...props}/>);
@@ -34,15 +36,17 @@ describe('component <ControlPanel/>', () => {
         props = setupObj.props;
     });
 
-    it('should trigger onRefresh on refresh click', () => {
-        output.find('.mQaRefresh').simulate('click');
-        expect(props.onRefresh).to.have.been.calledOnce;
-    });
-
-    describe('#render', () => {
-        it('should render a refersh icon', () => {
-            expect(output.find('.fa-refresh')).to.have.length(1);
+    describe('refresh', () => {
+        it('should trigger onRefresh on refresh click', () => {
+            output.find('.mQaControlPanelRefresh').simulate('click');
+            expect(props.onRefresh).to.have.been.calledOnce;
         });
     });
 
+    describe('add', () => {
+        it('should trigger onAdd on refresh click', () => {
+            output.find('.mQaControlPanelAdd').simulate('click');
+            expect(props.onAdd).to.have.been.calledOnce;
+        });
+    });
 });

@@ -26,6 +26,6 @@ describe('component <NumberWidget/>', () => {
     });
 
     it('should render the number in a span', () => {
-        expect(wrapper.find('span.mONumberWidget')).to.have.length(1);
+        expect(wrapper.find('span.mOWidgetSimpleText')).to.have.length(1);
     });
 });

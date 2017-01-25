@@ -39,7 +39,7 @@ describe('widget Map', () => {
     });
 
     it('should create a service with devices', () => {
-        expect(output.instance().service).to.be.an.instanceof(Service);
+        expect(output.state().service).to.be.an.instanceof(Service);
     });
 
     it('should pass the services to the overview and history container', () => {

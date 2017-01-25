@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import BaseMap from './basemap';
 import ControlPanel from '../../components/controlPanel';
@@ -7,7 +7,35 @@ import { Layer, Feature } from 'react-mapbox-gl';
 
 import { layoutFactory, paintFactory } from './styleFactory';
 
-export default ({ points, selectedPoint = { coordinates: [] }, center, onFeatureClick, onMapClick, onLoad, onZoomOut, onZoomIn, onRefresh }) => {
+MapHistory.propTypes = {
+    points: PropTypes.array.isRequired,
+    selectedPoint: PropTypes.object,
+    center: PropTypes.array,
+    hasControlPanel: PropTypes.bool,
+    onFeatureClick: PropTypes.func,
+    onMapClick: PropTypes.func,
+    onLoad: PropTypes.func,
+    onZoomIn: PropTypes.func,
+    onZoomOut: PropTypes.func,
+    onRefresh: PropTypes.func,
+    onSettingsClick: PropTypes.func,
+    widget: PropTypes.object
+};
+
+export default function MapHistory({
+    points,
+    selectedPoint = { coordinates: [] },
+    center,
+    hasControlPanel = true,
+    onFeatureClick,
+    onMapClick,
+    onLoad,
+    onZoomOut,
+    onZoomIn,
+    onRefresh,
+    onSettingsClick,
+    widget
+}) {
     const features = points.filter((p) => p !== selectedPoint).map(c => (<Feature coordinates={c.coordinates || []} properties={c.properties} onClick={() => onFeatureClick(c)}/>));
     const route = points.map((c) => c.coordinates);
     const selectedCoordinates = selectedPoint.coordinates;
@@ -40,7 +68,7 @@ export default ({ points, selectedPoint = { coordinates: [] }, center, onFeature
                    <Feature coordinates={selectedCoordinates}/>
                </Layer>
             </BaseMap>
-            <ControlPanel onRefresh={onRefresh}/>
+            { hasControlPanel ? <ControlPanel onRefresh={onRefresh} onAdd={() => onSettingsClick(widget, 'add')}/> : '' }
         </div>
     );
 };

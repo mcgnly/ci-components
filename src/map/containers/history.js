@@ -53,6 +53,17 @@ export class MapHistoryContainer extends React.Component {
         });
     }
 
+    componentWillReceiveProps(nextProps) {
+        const { deviceID: newDeviceID, service: newService } = nextProps;
+        const { deviceID: oldDeviceID, service: oldService } = this.props;
+        if (newService !== oldService) {
+            this.service = newService;
+        }
+        if (newDeviceID !== oldDeviceID) {
+            return this.fetchData();
+        }
+    }
+
     onSelectItem(point) {
         this.setState({
             selectedPoint: point
@@ -75,6 +86,7 @@ export class MapHistoryContainer extends React.Component {
                     onZoomIn={onZoomIn}
                     onZoomOut={onZoomOut}
                     onRefresh={() => this.fetchData({ fitTopMap: false })}
+                    {...this.props}
                 ></HistoryMap>
                 <HistoryList
                     message={message}

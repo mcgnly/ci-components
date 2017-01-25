@@ -11,13 +11,22 @@ export default class MapContainer extends React.Component {
         super(props);
         const { devices } = this.props;
         this.state = {
-            type: 'overview'
+            type: 'overview',
+            service: new Service(devices)
         };
-
-        this.service = new Service(devices);
 
         this.onShowHistoryClick = this.onShowHistoryClick.bind(this);
         this.onHistoryClose = this.onHistoryClose.bind(this);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        const { devices: newDevices } = nextProps;
+        const { devices: oldDevices } = this.props;
+        if (JSON.stringify(newDevices) !== JSON.stringify(oldDevices)) {
+            this.setState({
+                service: new Service(newDevices)
+            });
+        }
     }
 
     onShowHistoryClick(selectedDeviceId) {
@@ -34,9 +43,9 @@ export default class MapContainer extends React.Component {
     render() {
         if (this.state.type === 'history') {
             const { historyDeviceId } = this.state;
-            return <MapHistory {...this.props} deviceID={historyDeviceId} service={this.service} onCloseClick={this.onHistoryClose}/>;
+            return <MapHistory {...this.props} deviceID={historyDeviceId} service={this.state.service} onCloseClick={this.onHistoryClose}/>;
         } else {
-            return <MapOverview {...this.props} service={this.service} featureInstruction="Show history" onPopupClick={this.onShowHistoryClick}/>;
+            return <MapOverview {...this.props} service={this.state.service} featureInstruction="Show history" onPopupClick={this.onShowHistoryClick}/>;
         }
     }
 }

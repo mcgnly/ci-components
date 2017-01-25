@@ -27,7 +27,9 @@ function setup() {
         onRefresh: sinon.spy(),
         onLoad: sinon.spy(),
         onZoomIn: sinon.spy(),
-        onZoomOut: sinon.spy()
+        onZoomOut: sinon.spy(),
+        onSettingsClick: sinon.spy(),
+        widget: { id: 'widget-id' }
     };
 
     let output = shallow(<MapOverviewComponent {...props}/>);
@@ -169,6 +171,11 @@ describe('component <MapOverviewComponent/>', () => {
 
         it('should pass props to the control panel', () => {
             expect(output.find(ControlPanel).prop('onRefresh')).to.equal(props.onRefresh);
+        });
+
+        it('should call #onSettingsClick with add #onAdd', () => {
+            output.find(ControlPanel).prop('onAdd')();
+            expect(props.onSettingsClick).to.have.been.calledWith(props.widget, 'add');
         });
     });
 

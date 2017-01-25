@@ -32,6 +32,18 @@ export class MapOverviewContainer extends React.Component {
         return this.fetchData();
     }
 
+    componentWillReceiveProps(nextProps) {
+        const { devices: newDevices, service: newService } = nextProps;
+        const { devices: oldDevices, service: oldService } = this.props;
+        if (newService !== oldService) {
+            this.service = newService;
+        }
+
+        if (JSON.stringify(newDevices) !== JSON.stringify(oldDevices)) {
+            return this.fetchData();
+        }
+    }
+
     fetchData({ fitTopMap = true } = {}) {
         const { fitMap } = this.props;
         return this.service.getCoordinates().then((points) => {

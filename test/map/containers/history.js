@@ -108,6 +108,37 @@ describe('widget Map <MapHistory/> container', () => {
         });
     });
 
+    describe('#componentWillReceiveProps', () => {
+        beforeEach(() => {
+            getHistoryStub.reset();
+        });
+
+        it('should update the service if a new service is provided', () => {
+            const newDummyService = {
+                getHistory: sinon.stub().returns({ then: () => {} })
+            };
+            wrapper.setProps({
+                deviceID: 'new-device-id',
+                service: newDummyService
+            });
+            expect(newDummyService.getHistory).to.have.been.calledOnce;
+        });
+
+        it('should fetch data if the devices changes', () => {
+            wrapper.setProps({
+                deviceID: 'new-device-id',
+            });
+            expect(getHistoryStub).to.have.been.calledOnce;
+        });
+
+        it('should not fetch data if the devices does not changes', () => {
+            wrapper.setProps({
+                deviceID: 'history-device-id'
+            });
+            expect(getHistoryStub).not.to.have.been.calledOnce;
+        });
+    });
+
     describe('on refresh click', () => {
         beforeEach(() => {
             getHistoryStub.reset();

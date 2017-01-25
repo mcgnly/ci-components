@@ -9,13 +9,13 @@ function NumberWidget(props) {
     const text = (!isNum ? reading : formatNumber(reading, 3))
 
     return (
-        <span className="mONumberWidget">{ text }</span>
+        <span className="mOWidgetSimpleText">{ text }</span>
     );
 }
 
 function formatNumber(number, digitsAfterDecimal) {
     // parsing back to float removes any zeros after the decimal place,
-    // ie. '1.200' is changed to '1.2' 
+    // ie. '1.200' is changed to '1.2'
     return parseFloat(number.toFixed(digitsAfterDecimal))
 }
 
