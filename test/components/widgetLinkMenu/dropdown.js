@@ -17,7 +17,7 @@ function setup() {
         links: [{
             name: 'test-1', address: 'http://test-1.example.com'
         }, {
-            name: 'test-2', address: 'http://test-2.example.com'
+            name: 'test-2', address: 'http://test-2.example.com', open: 'external'
         }]
     };
 
@@ -50,5 +50,9 @@ describe('component <WidgetLinkMenuDropdown/>', () => {
     it('should open dropdown on dropdown menu button click', () => {
         output.find('.rDropdownMenuButton').simulate('click');
         expect(output.find('.rDropdownMenuOpen')).to.have.length(1);
+    });
+
+    it('should have _blank target if the link settings is open external', () => {
+        expect(output.find('[target="_blank"]')).to.have.length(1);
     });
 });

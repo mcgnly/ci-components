@@ -15,8 +15,8 @@ export default class WidgetLinkMenuDropdown extends React.Component {
     }
 
     static renderMenuItems(links) {
-        return links.map(({ name, address })=>
-            <a className="rDropdownMenuItem" key={`widget-menu-link-${name}`} href={address}>{name}</a>
+        return links.map(({ name, address, open })=>
+            <a className="rDropdownMenuItem" key={`widget-menu-link-${name}`} href={address} target={open === 'external' ? '_blank' : ''}>{name}</a>
         );
     }
 
