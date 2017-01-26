@@ -13,7 +13,7 @@ export default function ControlPanel({ onRefresh = () => {}, onAdd = () => {} })
             <div></div>
             <div className="rSectionHeaderElement mWCControl">
                 <i className="fa fa-refresh mQaControlPanelRefresh mWCControlItem" onClick={onRefresh}></i>
-                <i className="fa fa-plus mQaControlPanelAdd mWCControlItem" onClick={onAdd} style={{ display: 'none' }}></i>
+                <i className="fa fa-plus mQaControlPanelAdd mWCControlItem" onClick={onAdd}></i>
             </div>
         </div>
     );
