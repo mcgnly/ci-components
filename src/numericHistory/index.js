@@ -9,7 +9,7 @@ export default class NumberHistory  extends React.Component {
         super(props);
         const { title, devices, config: { readings } } = props;
         this.title = title;
-        this.state = { points: []};
+        this.state = { points: [] };
 
         devices.forEach(({ id }, i) => {
             const reading = readings[i];
@@ -23,21 +23,21 @@ export default class NumberHistory  extends React.Component {
         if (this.service) {
             this.service.getData({
                 onDataRecieved: (points) => {
-                    this.setState({points: points});
+                    this.setState({ points });
                 }
             });
         }
     }
 
     render() {
-        const { title } = this.props;
+        const { title, type } = this.props;
         return (
-            <li className="rBox rUtilityResetListItem mOWidgetBox mOFullWidget">
+            <li className="rBox rUtilityResetListItem mOWidgetBox mOFullWidget" data-qai-widget-type={type}>
                 <WidgetHeader {...this.props}/>
                 <div className="rBoxBody">
                     <NumericPlot data={this.state.points}></NumericPlot>
                 </div>
             </li>
-        )
+        );
     }
 }

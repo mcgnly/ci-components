@@ -50,14 +50,14 @@ export default (ComposedComponent, widgetSize = WidgetSizes.small) => class exte
     }
 
     render() {
-        const { title, onSettings } = this.props;
+        const { title, onSettings, type } = this.props;
         const { lastMessage } = this.state;
         const { widget = {} } = this.props;
         const hasLinks = 'config' in widget &&
                          'links' in widget.config &&
                          this.props.widget.config.links.length > 0;
         return (
-            <li className="rBox rUtilityResetListItem mOWidgetBox">
+            <li className="rBox rUtilityResetListItem mOWidgetBox" data-qai-widget-type={type}>
                 <WidgetHeader {...this.props}/>
                 <div className="rBoxBody mOWidgetBoxBody">
                     <div className={widgetSize.wrappingClass}>

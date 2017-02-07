@@ -5,9 +5,9 @@ import StatusAlert from './statusAlert';
 import WidgetHeader from '../../components/header';
 
 export default (props) => {
-    const { statuses, onLinkClick, overAllStatus } = props;
+    const { statuses, onLinkClick, overAllStatus, type } = props;
     return (
-        <li className="rBox mOWidgetBox mOFullWidget">
+        <li className="rBox mOWidgetBox mOFullWidget" data-qai-widget-type={type}>
             <table className="rTable">
                 <thead className="rTableHeader">
                     <tr>
