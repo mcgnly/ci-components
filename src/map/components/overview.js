@@ -59,7 +59,7 @@ export default function MapOverview({
 
     const features = points.map((c) => (<Feature key={`feature-coordinate-${c.coordinates}`} coordinates={c.coordinates} properties={c.properties} onClick={() => onFeatureClick(c)}/>));
     return (
-        <div>
+        <div data-qai-widget-type="map">
             {messageComponent}
             <BaseMap
                 center={center}
