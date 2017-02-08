@@ -21,11 +21,24 @@ let MQTTServiceStub = sinon.spy(() => serviceMock);
 
 LiveWidget.__Rewire__('MQTTService', MQTTServiceStub);
 
+class DummyComponent extends React.Component {
+    render() {
+        return <div></div>;
+    }
+}
+
 function setup() {
     let props = {
         title: 'test-title',
         devices: [{ id: 'my-id' }, { id: 'my-second-id' }],
-        readings: [{ path: 'my-path', meaning: 'my-meaning' }]
+        readings: [{
+            path: 'my-path', meaning: 'my-meaning',
+            valueSchema: {
+                maximum: 99,
+                minimum: 1,
+                unit: 'F'
+            }
+        }]
     };
 
     serviceMock = {
@@ -33,11 +46,6 @@ function setup() {
         disconnect: sinon.spy()
     };
 
-    class DummyComponent extends React.Component {
-        render() {
-            return <div></div>;
-        }
-    }
 
     const WrappedComponent = LiveWidget(DummyComponent);
 
@@ -106,5 +114,51 @@ describe('component LiveWidget higher order component', () => {
         clock.tick(2000);
 
         expect(wrapper.currentTimeInterval).not.to.be.defined;
+    });
+
+    it('should not fail if the widget has no config', () => {
+        wrapper.setProps({
+            widget: {}
+        });
+        expect(wrapper.find(DummyComponent)).to.have.length(1);
+    });
+
+    it('should take the min/max value from the widget config', () => {
+        expect(wrapper.find(DummyComponent).prop('min')).to.equal(1);
+        expect(wrapper.find(DummyComponent).prop('max')).to.equal(99);
+    });
+
+    it('should take the unit from the widget config', () => {
+        expect(wrapper.find(DummyComponent).prop('unit')).to.equal('F');
+    });
+
+    describe('has links', () => {
+        beforeEach(() => {
+            wrapper.setProps({
+                widget: {
+                    config: {
+                        links: [{ name: 'test-name', address: 'http://example.com' }]
+                    }
+                }
+            });
+        });
+
+        it('should render the link menu', () => {
+            expect(wrapper.find('WidgetLinkMenu')).to.have.length(1);
+        });
+    });
+
+    describe('has no links', () => {
+        beforeEach(() => {
+            wrapper.setProps({
+                widget: {
+                    config: {}
+                }
+            });
+        });
+
+        it('should not render the link menu', () => {
+            expect(wrapper.find('WidgetLinkMenu')).to.have.length(0);
+        });
     });
 });

@@ -1,71 +1,119 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import MQTTService from './service/mqtt.js';
 
-import HumanReadableTimestamp from './time/humanReadable';
 import WidgetHeader from './components/header';
 import WidgetSizes from './widgetSizes';
 import WidgetLinkMenu from './components/widgetLinkMenu';
 
-export default (ComposedComponent, widgetSize = WidgetSizes.small) => class extends React.Component {
-    constructor(props) {
-        super(props);
-        const { readings = [], devices = [] } = props;
+const WidgetPropType = {
+    id: PropTypes.number,
+    type: PropTypes.string,
+    version: PropTypes.string,
+    config: PropTypes.shape({
+       readings: PropTypes.arrayOf(
+           PropTypes.shape({
+                path: PropTypes.string,
+                meaning: PropTypes.string,
+                id: PropTypes.string,
+                valueSchema: PropTypes.object
+            })
+        ),
+        links: PropTypes.arrayOf(PropTypes.shape({
+            address: PropTypes.string,
+            name: PropTypes.string
+        })),
+        min: PropTypes.number,
+        max: PropTypes.number,
+        unit: PropTypes.string
+    }),
+    title: PropTypes.string,
+    query: PropTypes.shape({
+        deviceIds: PropTypes.arrayOf(PropTypes.string),
+        deviceDescription: PropTypes.string,
+        deviceName: PropTypes.string,
+        firmwareVersion: PropTypes.string
+    }),
+    results: PropTypes.arrayOf(
+       PropTypes.shape({
+           id: PropTypes.string,
+           owner: PropTypes.string,
+           name: PropTypes.string,
+           modelId: PropTypes.string
+       })
+   )
+};
 
-        this.state = {
-            reading: 0
-        };
+export default (ComposedComponent, widgetSize = WidgetSizes.small) => {
+    return class LiveWidget extends React.Component {
+        constructor(props) {
+            super(props);
+            const { readings = [], devices = [] } = props;
 
-        this.services = [];
-        devices.forEach(({ id }) => {
-            this.services = this.services.concat(readings.map(({ meaning, path }) => new MQTTService({
-                id,
-                meaning,
-                path,
-                onMessage: ({ value, lastMessage }) => {
-                    this.setState({ reading: value, lastMessage });
+            this.state = {
+                reading: 0
+            };
+
+            this.services = [];
+            devices.forEach(({ id }) => {
+                this.services = this.services.concat(readings.map(({ meaning, path }) => new MQTTService({
+                    id,
+                    meaning,
+                    path,
+                    onMessage: ({ value, lastMessage }) => {
+                        this.setState({ reading: value, lastMessage });
+                    }
+                })));
+            });
+        }
+
+        componentDidMount() {
+            this.currentTimeInterval = setInterval(() => {
+                this.setState({ currentTime: new Date() });
+            }, 1000);
+
+            this.services.map((service) => {
+                if (service.connect) {
+                    service.connect();
                 }
-            })));
-        });
-    }
+            });
+        }
 
-    componentDidMount() {
-        this.currentTimeInterval = setInterval(() => {
-            this.setState({ currentTime: new Date() });
-        }, 1000);
+        componentWillUnmount() {
+            this.services.map((service) => {
+                service.disconnect();
+            });
 
-        this.services.map((service) => {
-            if (service.connect) {
-                service.connect();
-            }
-        });
-    }
+            clearInterval(this.currentTimeInterval);
+        }
 
-    componentWillUnmount() {
-        this.services.map((service) => {
-            service.disconnect();
-        });
+        render() {
+            const { lastMessage } = this.state;
+            const { readings = [], widget = {} } = this.props;
+            const hasLinks = 'config' in widget &&
+                             'links' in widget.config &&
+                             this.props.widget.config.links.length > 0;
 
-        clearInterval(this.currentTimeInterval);
-    }
-
-    render() {
-        const { title, onSettings, type } = this.props;
-        const { lastMessage } = this.state;
-        const { widget = {} } = this.props;
-        const hasLinks = 'config' in widget &&
-                         'links' in widget.config &&
-                         this.props.widget.config.links.length > 0;
-        return (
-            <li className="rBox rUtilityResetListItem mOWidgetBox" data-qai-widget-type={type}>
-                <WidgetHeader {...this.props}/>
-                <div className="rBoxBody mOWidgetBoxBody">
-                    <div className={widgetSize.wrappingClass}>
-                        <ComposedComponent {...this.props} state={this.state}/>
+            const firstReading = readings[0] || {};
+            const { minimum: min, maximum: max, unit } = firstReading.valueSchema || {};
+            return (
+                <li className="rBox rUtilityResetListItem mOWidgetBox">
+                    <WidgetHeader {...this.props} lastMessage={lastMessage}/>
+                    <div className="rBoxBody mOWidgetBoxBody">
+                        <div className={widgetSize.wrappingClass}>
+                            <ComposedComponent {...this.props} state={this.state} min={min} max={max} unit={unit}/>
+                        </div>
+                        { hasLinks && <WidgetLinkMenu links={this.props.widget.config.links}/> }
                     </div>
-                    { hasLinks && <WidgetLinkMenu links={this.props.widget.config.links}/> }
-                </div>
-            </li>
-        );
-    }
+                </li>
+            );
+        }
+    };
+
+    LiveWidget.propTypes = {
+        type: PropTypes.string,
+        title: PropTypes.string,
+        widget: PropTypes.shape(WidgetPropType),
+        onSettings: PropTypes.func
+    };
 };

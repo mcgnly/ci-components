@@ -11,8 +11,7 @@ function setup() {
     let props = {
         title: 'test-title',
         readings: [{ id: 'my-id', path: 'my-path', meaning: 'my-meaning' }],
-        min: 0,
-        max: 5000
+        widget: {}
     };
 
     let wrapper = mount(<LuminosityComponent {...props}/>);
@@ -30,6 +29,13 @@ describe('component <Luminosity/>', () => {
     });
 
     it('should render the Luminosity sensor widget', () => {
+        expect(wrapper.find(Luminosity)).to.have.length(1);
+    });
+
+    it('should not fail if the widget has no config', () => {
+        wrapper.setProps({
+            widget: {}
+        });
         expect(wrapper.find(Luminosity)).to.have.length(1);
     });
 });

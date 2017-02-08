@@ -8,7 +8,7 @@ import { Luminosity } from 'relayr-sensor-illustrations';
 class LuminosityWidget extends React.Component {
     render() {
         return (
-            <Luminosity value={this.props.state.reading} min={this.props.min} max={this.props.max}></Luminosity>
+            <Luminosity value={this.props.state.reading} {...this.props}/>
         );
     }
 }

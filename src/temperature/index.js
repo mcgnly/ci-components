@@ -7,7 +7,7 @@ import { Temperature } from 'relayr-sensor-illustrations';
 class TemperatureWidget extends React.Component {
     render() {
         const { state } = this.props;
-        return <Temperature value={state.reading} min={0} max={100}></Temperature>;
+        return <Temperature value={state.reading} {...this.props}/>;
     }
 }
 

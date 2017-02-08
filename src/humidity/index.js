@@ -7,7 +7,7 @@ import { Humidity } from 'relayr-sensor-illustrations';
 class HumidityWidget extends React.Component {
     render() {
         const { state } = this.props;
-        return <Humidity value={state.reading} min={0} max={99}></Humidity>;
+        return <Humidity value={state.reading} {...this.props}/>;
     }
 }
 

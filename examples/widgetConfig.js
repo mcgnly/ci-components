@@ -1,3 +1,6 @@
+const DEVICE_ID = 'c5679ef2-3542-4af7-9473-89f5973e311b';
+const DEVICE_MEANING = 'temperature';
+
 export default [
     {
         type: 'Temperature',
@@ -6,21 +9,45 @@ export default [
             readings: [
                 {
                     path: '',
-                    meaning: 'someMeaning',
+                    meaning: DEVICE_MEANING,
                     valueSchema: {
-                        type: 'integer'
+                        type: 'integer',
+                        minimum: 10,
+                        maximum: 90,
+                        unit: 'K'
                     }
                 }
-            ]
+            ],
         },
         title: 'Temperature',
         query: {
             deviceIds: [
-                '8c8c2244-4c65-446c-9135-847f7d422081'
+                DEVICE_ID
             ]
         },
         results: [
-            { id: '8c8c2244-4c65-446c-9135-847f7d422081' }
+            { id: DEVICE_ID }
+        ]
+    },
+    {
+        type: 'Temperature',
+        version: '0.1',
+        config: {
+            readings: [
+                {
+                    path: '',
+                    meaning: DEVICE_MEANING
+                }
+            ],
+        },
+        title: 'Temperature',
+        query: {
+            deviceIds: [
+                DEVICE_ID
+            ]
+        },
+        results: [
+            { id: DEVICE_ID }
         ]
     },
     {
@@ -30,21 +57,23 @@ export default [
             readings: [
                 {
                     path: '',
-                    meaning: 'someMeaning',
+                    meaning: DEVICE_MEANING,
                     valueSchema: {
-                        type: 'number'
+                        type: 'number',
+                        minimum: 10,
+                        maximum: 90
                     }
                 }
-            ]
+            ],
         },
         title: 'Humidity',
         query: {
             deviceIds: [
-                '8c8c2244-4c65-446c-9135-847f7d422081'
+                DEVICE_ID
             ]
         },
         results: [
-            { id: '8c8c2244-4c65-446c-9135-847f7d422081' }
+            { id: DEVICE_ID }
         ]
     },
     {
@@ -54,21 +83,23 @@ export default [
             readings: [
                 {
                     path: '',
-                    meaning: 'someMeaning',
+                    meaning: DEVICE_MEANING,
                     valueSchema: {
-                        type: 'integer'
+                        type: 'integer',
+                        minimum: 10,
+                        maximum: 90
                     }
                 }
-            ]
+            ],
         },
         title: 'Radial',
         query: {
             deviceIds: [
-                '8c8c2244-4c65-446c-9135-847f7d422081'
+                DEVICE_ID
             ]
         },
         results: [
-            { id: '8c8c2244-4c65-446c-9135-847f7d422081' }
+            { id: DEVICE_ID }
         ]
     },
     {
@@ -78,21 +109,23 @@ export default [
             readings: [
                 {
                     path: '',
-                    meaning: 'someMeaning',
+                    meaning: DEVICE_MEANING,
                     valueSchema: {
-                        type: 'integer'
+                        type: 'integer',
+                        minimum: 10,
+                        maximum: 1000
                     }
                 }
-            ]
+            ],
         },
         title: 'Luminosity',
         query: {
             deviceIds: [
-                '8c8c2244-4c65-446c-9135-847f7d422081'
+                DEVICE_ID
             ]
         },
         results: [
-            { id: '8c8c2244-4c65-446c-9135-847f7d422081' }
+            { id: DEVICE_ID }
         ]
     },
     {
@@ -102,7 +135,7 @@ export default [
             readings: [
                 {
                     path: '',
-                    meaning: 'someMeaning',
+                    meaning: DEVICE_MEANING,
                     valueSchema: {
                         type: 'boolean'
                     }
@@ -112,11 +145,11 @@ export default [
         title: 'Boolean',
         query: {
             deviceIds: [
-                '8c8c2244-4c65-446c-9135-847f7d422081'
+                DEVICE_ID
             ]
         },
         results: [
-            { id: '8c8c2244-4c65-446c-9135-847f7d422081' }
+            { id: DEVICE_ID }
         ]
     },
     {
@@ -126,7 +159,7 @@ export default [
             readings: [
                 {
                     path: '',
-                    meaning: 'someMeaning',
+                    meaning: DEVICE_MEANING,
                     valueSchema: {
                         type: 'integer'
                     }
@@ -136,11 +169,11 @@ export default [
         title: 'Percentage',
         query: {
             deviceIds: [
-                '8c8c2244-4c65-446c-9135-847f7d422081'
+                DEVICE_ID
             ]
         },
         results: [
-            { id: '8c8c2244-4c65-446c-9135-847f7d422081' }
+            { id: DEVICE_ID }
         ]
     },
     {
@@ -151,7 +184,7 @@ export default [
             readings: [
                 {
                     path: '',
-                    meaning: 'someMeaning',
+                    meaning: DEVICE_MEANING,
                     valueSchema: {
                         type: 'number'
                     }
@@ -160,11 +193,11 @@ export default [
         },
         query: {
             deviceIds: [
-                '8c8c2244-4c65-446c-9135-847f7d422081'
+                DEVICE_ID
             ]
         },
         results: [
-            { id: '8c8c2244-4c65-446c-9135-847f7d422081' }
+            { id: DEVICE_ID }
         ]
     },
     {
@@ -175,7 +208,7 @@ export default [
             readings: [
                 {
                     path: '',
-                    meaning: 'someMeaning',
+                    meaning: DEVICE_MEANING,
                     valueSchema: {
                         type: 'integer'
                     }
@@ -188,11 +221,11 @@ export default [
         },
         query: {
             deviceIds: [
-                '8c8c2244-4c65-446c-9135-847f7d422081'
+                DEVICE_ID
             ]
         },
         results: [
-            { id: '8c8c2244-4c65-446c-9135-847f7d422081' }
+            { id: DEVICE_ID }
         ]
     },
     {
@@ -214,7 +247,7 @@ export default [
             readings: [
                 {
                     path: '',
-                    meaning: 'someMeaning',
+                    meaning: DEVICE_MEANING,
                     valueSchema: {
                         type: 'integer'
                     }
@@ -224,11 +257,11 @@ export default [
         title: 'NumericHistory',
         query: {
             deviceIds: [
-                '8c8c2244-4c65-446c-9135-847f7d422081'
+                DEVICE_ID
             ]
         },
         results: [
-            { id: '8c8c2244-4c65-446c-9135-847f7d422081' }
+            { id: DEVICE_ID }
         ]
     },
     {

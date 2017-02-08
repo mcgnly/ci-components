@@ -10,7 +10,14 @@ import { Temperature } from 'relayr-sensor-illustrations';
 function setup() {
     let props = {
         title: 'test-title',
-        readings: [{ id: 'my-id', path: 'my-path', meaning: 'my-meaning' }]
+        readings: [{ id: 'my-id', path: 'my-path', meaning: 'my-meaning' }],
+        widget: {
+            config: {
+                min: 1,
+                max: 99,
+                unit: 'F'
+            }
+        }
     };
 
     let wrapper = mount(<TemperatureComponent {...props}/>);
