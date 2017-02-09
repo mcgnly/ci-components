@@ -11,3 +11,4 @@
 05.01.2017 1.0.12) Feature) Widgets with dropdown with the links for custom widgets
 10.01.2017 1.0.13) Bugfix) Does not show error modals for small map widget. Mapbox logo is not always on top.
 07.02.2017 1.0.14) Refactor) New selectors for automized integration tests
+07.02.2017 1.0.15) Feature) Widgets temperature, humidity, radial and luminosity uses min/max from valueschema
