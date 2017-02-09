@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import moment from 'moment';
 
 function humanReadableDiff(timestamp) {
@@ -9,8 +9,12 @@ function humanReadableDiff(timestamp) {
     return moment.duration(diff).humanize(true);
 };
 
-export default ({ timestamp }) => {
-    return (
-        <div>{humanReadableDiff(timestamp)}</div>
-    );
+export default function HumanReadableTimestamp({ timestamp }) {
+    if (!timestamp) return <span>No data have been sent</span>;
+    return (<span>Last updated: {humanReadableDiff(timestamp)}</span>);
+};
+
+
+HumanReadableTimestamp.propTypes = {
+    timestamp: PropTypes.instanceOf(Date)
 };

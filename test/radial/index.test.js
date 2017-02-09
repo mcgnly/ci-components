@@ -10,7 +10,8 @@ import { Radial } from 'relayr-sensor-illustrations';
 function setup() {
     let props = {
         title: 'test-title',
-        readings: [{ id: 'my-id', path: 'my-path', meaning: 'my-meaning' }]
+        readings: [{ id: 'my-id', path: 'my-path', meaning: 'my-meaning' }],
+        widget: {}
     };
 
     let wrapper = mount(<RadialComponent {...props}/>);

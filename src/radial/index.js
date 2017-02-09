@@ -9,7 +9,7 @@ class RadialWidget extends React.Component {
     render() {
         const { state } = this.props;
         return (
-            <Radial value={state.reading} min={0} max={100}></Radial>
+            <Radial {...this.props} value={state.reading}/>
         );
     }
 }

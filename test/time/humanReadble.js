@@ -29,17 +29,17 @@ describe('component <HumanReadbleTimestamp/>', () => {
 
         it('hours', () => {
             clock = sinon.useFakeTimers((new Date(1985, 10, 8, 14, 0)).getTime());
-            expect(setup().output.text()).to.equal('2 hours ago');
+            expect(setup().output.text()).to.equal('Last updated: 2 hours ago');
         });
 
         it('minutes', () => {
             clock = sinon.useFakeTimers((new Date(1985, 10, 8, 12, 20)).getTime());
-            expect(setup().output.text()).to.equal('20 minutes ago');
+            expect(setup().output.text()).to.equal('Last updated: 20 minutes ago');
         });
     });
 
-    it('should show an empty string if no valid timestamp has been provided', function() {
-        expect(shallow(<HumanReadbleTimestamp/>).text()).to.equal('');
+    it('should show an empty message no valid timestamp has been provided', function() {
+        expect(shallow(<HumanReadbleTimestamp/>).text()).to.equal('No data have been sent');
     });
 
 });
