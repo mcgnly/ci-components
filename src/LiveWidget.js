@@ -89,7 +89,7 @@ export default (ComposedComponent, widgetSize = WidgetSizes.small) => {
 
         render() {
             const { lastMessage } = this.state;
-            const { readings = [], widget = {} } = this.props;
+            const { readings = [], widget = {}, type } = this.props;
             const hasLinks = 'config' in widget &&
                              'links' in widget.config &&
                              this.props.widget.config.links.length > 0;
@@ -97,7 +97,7 @@ export default (ComposedComponent, widgetSize = WidgetSizes.small) => {
             const firstReading = readings[0] || {};
             const { minimum: min, maximum: max, unit } = firstReading.valueSchema || {};
             return (
-                <li className="rBox rUtilityResetListItem mOWidgetBox">
+                <li className="rBox rUtilityResetListItem mOWidgetBox" data-qai-widget-type={type}>
                     <WidgetHeader {...this.props} lastMessage={lastMessage}/>
                     <div className="rBoxBody mOWidgetBoxBody">
                         <div className={widgetSize.wrappingClass}>
