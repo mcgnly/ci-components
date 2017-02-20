@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import WidgetComponent from './widgetComponent';
 import Radial from './radial';
@@ -13,8 +13,9 @@ import SimpleRedirect from './simpleRedirect';
 import HealthMonitor from './healthMonitor';
 import HumanReadbleTimestamp from './time/humanReadable';
 import MapWidget from './map/smallWidget';
+import { WidgetPropType } from './widgetPropType';
 
-export default (props) => {
+export default function Widget(props) {
     const { widgets, hasFullSizeWidget } = props;
     const widgetComponents = widgets.map((w, index) => {
         return (
@@ -29,6 +30,10 @@ export default (props) => {
     );
 };
 
+Widget.propTypes = {
+    hasFullSizeWidget: PropTypes.bool,
+    widget: PropTypes.shape(WidgetPropType)
+};
 
 export {
     WidgetComponent,

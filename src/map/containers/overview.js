@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import Map from '../components/overview';
 import MapContainer from './mapcontainer';
@@ -103,5 +103,13 @@ export class MapOverviewContainer extends React.Component {
         );
     }
 }
+
+MapOverviewContainer.propTypes = {
+    onMapLoad:          PropTypes.func,
+    onPopupClick:       PropTypes.func,
+    featureInstruction: PropTypes.string,
+    devices:            PropTypes.array,
+    service:            PropTypes.object,
+};
 
 export default MapContainer(MapOverviewContainer);

@@ -52,7 +52,7 @@ describe('component <WidgetComponent/>', () => {
 
     it('should be set for healthMonitor to healthMonitor widget', () => {
         const widget = { type: 'healthMonitor', title: 'test' };
-        const output = shallow(<WidgetComponent widget={widget}/>);
+        const output = shallow(<WidgetComponent widget={widget} redirectMethod={() => {}}/>);
         expect(output.type()).to.equal(HealthMonitor);
     });
 

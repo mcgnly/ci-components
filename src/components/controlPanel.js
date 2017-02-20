@@ -18,3 +18,8 @@ export default function ControlPanel({ onRefresh = () => {}, onAdd = () => {} })
         </div>
     );
 };
+
+ControlPanel.propTypes = {
+    onRefresh: PropTypes.func,
+    onAdd: PropTypes.func
+};

@@ -1,14 +1,13 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import { NumericPlot } from 'relayr-sensor-illustrations';
 
 import Service from './numericHistory.service.js';
 import WidgetHeader from '../components/header';
 
-export default class NumberHistory  extends React.Component {
+export default class NumberHistory extends React.Component {
     constructor(props) {
         super(props);
-        const { title, devices, config: { readings } } = props;
-        this.title = title;
+        const { devices, config: { readings } } = props;
         this.state = { points: [] };
 
         devices.forEach(({ id }, i) => {
@@ -41,3 +40,19 @@ export default class NumberHistory  extends React.Component {
         );
     }
 }
+
+NumberHistory.propTypes = {
+    title:        PropTypes.string,
+    type:         PropTypes.string,
+    devices:      PropTypes.array,
+    config:       PropTypes.shape({
+        readings: PropTypes.arrayOf(
+            PropTypes.shape({
+                path: PropTypes.string,
+                meaning: PropTypes.string,
+                id: PropTypes.string,
+                valueSchema: PropTypes.object
+            })
+        )
+    })
+};

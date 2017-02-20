@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import Service from './service';
 
 import HealthMonitorComponent from './components';
+
+import { WidgetPropType } from '../widgetPropType';
 
 export default class HealthMonitorContainer extends React.Component {
     constructor(props) {
@@ -71,3 +73,11 @@ export default class HealthMonitorContainer extends React.Component {
         return (<HealthMonitorComponent {...this.props} statuses={statusGroups} overAllStatus={currentStatus} onLinkClick={this.onLinkClick}/>);
     }
 }
+
+HealthMonitorContainer.propTypes = {
+    devices: WidgetPropType.results,
+    config: PropTypes.shape({
+        healthMonitorId: PropTypes.string.isRequired,
+    }),
+    redirectMethod: PropTypes.func.isRequired
+};

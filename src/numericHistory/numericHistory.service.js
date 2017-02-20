@@ -13,13 +13,13 @@ export default class MqttService {
         this.d.getAllHistoricalData({
             periode: '1m',
             onDataReceived: (points) => {
-                if(points.get) {
+                if (points.get) {
                     const dataPoints = points.get(this.meaning, this.path);
                     if (dataPoints) {
                         onDataRecieved(dataPoints);
                     }
                 }
             }
-        })
+        });
     }
 };
