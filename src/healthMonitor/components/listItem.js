@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import StatusSymbol from './statusSymbol';
 
-export default ({ count, status, onClick }) => {
+export default function ListItem({ count, status, onClick }) {
     return (
         <tr className="mCWidgetHealthMonitorRow">
             <td className="rTableCell rTableCellWide">
@@ -15,4 +15,10 @@ export default ({ count, status, onClick }) => {
             </td>
         </tr>
     );
+};
+
+ListItem.propTypes = {
+    count:      PropTypes.number.isRequired,
+    status:     PropTypes.oneOf(['online', 'offline', 'outage', 'inactive']).isRequired,
+    onClick:    PropTypes.func.isRequired
 };
