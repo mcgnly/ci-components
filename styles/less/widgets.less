@@ -3,7 +3,7 @@
 @mSmallWidgetWidth:   100px;
 @mSmallWidgetHeight:  120px;
 @mMediumWidgetWidth:  200px;
-@mMediumWidgetHeight: 120px;
+@mMediumWidgetHeight: 115px;
 @mLargeWidgetWidth:   300px;
 @mLargeWidgetHeight:  120px;
 @mWigetFullMinWidth:  500px;
@@ -38,11 +38,16 @@
     min-width: @mWigetFullMinWidth;
 }
 
-.mOWidgetBox {
+.mOWidgetBoxHeader:hover {
+    color: white;
+    background-color: @color-primary-action;
+}
+
+.rBox.mOWidgetBox {
     vertical-align: top;
 
     .mOWidgetBoxBody {
-        padding-bottom: 15px !important;
+        padding: 15px 0px;
     }
 }
 

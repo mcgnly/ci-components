@@ -37,7 +37,7 @@ describe('component <WidgetHeader/>', () => {
     });
 
     it('should trigger onSettings on settings click', () => {
-        output.find('.mQaSettings').simulate('click');
+        output.find('.mQaHeaderSettings').simulate('click');
         expect(props.onSettingsClick).to.have.been.calledOnce;
     });
 
@@ -50,7 +50,7 @@ describe('component <WidgetHeader/>', () => {
         });
 
         it('should show settings if showSettings is true', () => {
-            expect(output.find('.mQaSettings')).to.have.length(1);
+            expect(output.find('.mQaHeaderSettings')).to.have.length(1);
         });
     });
 
