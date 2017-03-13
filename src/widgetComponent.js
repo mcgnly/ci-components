@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 import Radial from './radial';
 import Percentage from './percentage';
 import Number from './number';
@@ -26,7 +26,7 @@ const Components = {
     MapWidget: SmallMapWidget
 };
 
-export default (props) => {
+export default function WidgetComponent(props) {
     const { widget } = props;
     const { title, config, type, results: devices } = widget;
     const { readings } = config ? config : { readings: [] };
@@ -38,4 +38,28 @@ export default (props) => {
     return (
         <Component {...props} type={type} config={config} devices={devices} readings={readings} title={title}></Component>
     );
+};
+
+
+WidgetComponent.propTypes = {
+    type: PropTypes.string,
+    config: PropTypes.shape({
+       readings: PropTypes.arrayOf(
+           PropTypes.shape({
+                path: PropTypes.string,
+                meaning: PropTypes.string,
+                id: PropTypes.string,
+                valueSchema: PropTypes.object
+            })
+        )
+    }),
+    title: PropTypes.string,
+    results: PropTypes.arrayOf(
+       PropTypes.shape({
+           id: PropTypes.string,
+           owner: PropTypes.string,
+           name: PropTypes.string,
+           modelId: PropTypes.string
+       })
+   )
 };

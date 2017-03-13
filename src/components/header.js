@@ -1,8 +1,9 @@
-import React from 'react';
-import  HumanReadableTimestamp from '../time/humanReadable';
+import React, { PropTypes } from 'react';
+import HumanReadableTimestamp from '../time/humanReadable';
 
-export default ({ title, lastMessage, widget, showSettings, onSettingsClick }) => {
-    const settingsIcon = showSettings ? <i className="fa fa-cog mQaSettings mQAIWidgetSettings"></i> : '';
+export default function Header({ title, lastMessage, widget, showSettings, onSettingsClick }) {
+    const settingsIcon = showSettings ? <i className="fa fa-cog mCWidgetIcon mQaSettings mQAIWidgetSettings" onClick={() => onSettingsClick(widget)}></i> : '';
+
     return (
         <div>
             <div className="rBoxHeader mOWidgetBoxHeader mCWidgetIcon mQaHeaderSettings" onClick={() => onSettingsClick(widget)}>
@@ -16,4 +17,13 @@ export default ({ title, lastMessage, widget, showSettings, onSettingsClick }) =
             </div>
         </div>
     );
+};
+
+
+Header.propTypes = {
+    title: PropTypes.string.isRequired,
+    lastMessage: PropTypes.instanceOf(Date),
+    widget: PropTypes.object,
+    showSettings: PropTypes.bool,
+    onSettingsClick: PropTypes.func
 };

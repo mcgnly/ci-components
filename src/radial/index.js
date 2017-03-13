@@ -1,6 +1,6 @@
 import React from 'react';
 
-import LiveWidget from '../LiveWidget.js';
+import LiveWidget from '../LiveWidget';
 
 import { Radial } from 'relayr-sensor-illustrations';
 

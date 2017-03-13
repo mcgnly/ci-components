@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import LoadingIcon from '../icons/loading';
 
@@ -18,3 +18,9 @@ export default class SimpleRedirectContainer extends React.Component {
         return <LoadingIcon/>;
     }
 }
+
+SimpleRedirectContainer.propTypes = {
+    redirectMethod: PropTypes.func.isRequired,
+    type:           PropTypes.string,
+    config:         PropTypes.any
+};

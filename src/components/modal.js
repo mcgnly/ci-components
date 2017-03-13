@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 export default class Modal extends React.Component {
     constructor(props) {
@@ -37,4 +37,13 @@ export default class Modal extends React.Component {
             </dialog>
         );
     }
+};
+
+Modal.propTypes = {
+    title: PropTypes.string,
+    closeMessage: PropTypes.string,
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ])
 };

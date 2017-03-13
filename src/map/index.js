@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import MapOverview from './containers/overview';
 import MapHistory from  './containers/history';
@@ -49,3 +49,14 @@ export default class MapContainer extends React.Component {
         }
     }
 }
+
+MapContainer.propTypes = {
+    devices: PropTypes.arrayOf(
+       PropTypes.shape({
+           id: PropTypes.string,
+           owner: PropTypes.string,
+           name: PropTypes.string,
+           modelId: PropTypes.string
+       })
+   )
+};

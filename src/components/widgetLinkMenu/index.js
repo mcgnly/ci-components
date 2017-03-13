@@ -20,5 +20,5 @@ const LINK_SHAPE = React.PropTypes.shape({
 });
 
 WidgetLinkMenu.propTypes = {
-    links: React.PropTypes.arrayOf(LINK_SHAPE).isRequired
+    links: React.PropTypes.arrayOf(LINK_SHAPE)
 };

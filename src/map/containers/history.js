@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 import HistoryMap from '../components/history';
 import HistoryList from '../components/historyList';
@@ -99,5 +99,15 @@ export class MapHistoryContainer extends React.Component {
         );
     }
 }
+
+MapHistoryContainer.propTypes = {
+    onZoomIn:     PropTypes.func,
+    onZoomOut:    PropTypes.func,
+    onMapLoad:    PropTypes.func,
+    onCloseClick: PropTypes.func,
+    service:      PropTypes.object,
+    deviceID:     PropTypes.string,
+    fitMap:       PropTypes.func
+};
 
 export default MapContainer(MapHistoryContainer);
