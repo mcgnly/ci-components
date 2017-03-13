@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { PropTypes } from 'react';
 
 function getClass(status) {
     let st = status ? status.toLowerCase() : status;
@@ -17,10 +17,15 @@ function getClass(status) {
 };
 
 
-export default ({ status, children }) => {
+export default function StatusSymbol({ status, children }) {
     return (
         <span className={`mCWidgetHealthStatus ${getClass(status)}`}>
             {children}
         </span>
     );
+};
+
+StatusSymbol.propTypes = {
+    status:     PropTypes.oneOf(['online', 'offline', 'outage', 'inactive']).isRequired,
+    children:   PropTypes.oneOfType([PropTypes.element, PropTypes.arrayOf(PropTypes.element), PropTypes.string])
 };

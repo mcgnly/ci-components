@@ -60,7 +60,7 @@ export default class HealthMonitorContainer extends React.Component {
         }
     }
 
-    onLinkClick(status) {
+    onLinkClick(status = '') {
         const { redirectMethod, config } = this.props;
 
         if (config.healthMonitorId) {
