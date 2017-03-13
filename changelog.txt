@@ -12,3 +12,4 @@
 10.01.2017 1.0.13) Bugfix) Does not show error modals for small map widget. Mapbox logo is not always on top.
 07.02.2017 1.0.14) Refactor) New selectors for automized integration tests
 07.02.2017 1.0.15) Feature) Widgets temperature, humidity, radial and luminosity uses min/max from valueschema
+13.03.2017 1.0.16) Bugfix) PropTypes, Click widget header trigger settings, healthmonitor no devices message
