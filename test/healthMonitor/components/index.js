@@ -5,6 +5,7 @@ import React from 'react';
 
 import HealthMonitorComponent from '../../../src/healthMonitor/components';
 import HealthMonitorListItem from '../../../src/healthMonitor/components/listItem';
+import HealthMonitorEmptyItem from '../../../src/healthMonitor/components/emptyItem';
 import HealthMonitorStatusAlert from '../../../src/healthMonitor/components/statusAlert';
 
 function setup() {
@@ -35,18 +36,34 @@ describe('component <HealthMonitorComponent/>', () => {
         props = setupObj.props;
     });
 
-    it('should render a HealthMonitorListIitem per status', () => {
-        expect(output.find(HealthMonitorListItem)).to.have.length(4);
+    describe('has statuses', () => {
+        it('should render a HealthMonitorListIitem per status', () => {
+            expect(output.find(HealthMonitorListItem)).to.have.length(4);
+        });
+
+        it('should pass status the list item', () => {
+            let outputProps = output.find(HealthMonitorListItem).first().props();
+            expect(outputProps.count).to.equal(1);
+            expect(outputProps.status).to.equal('online');
+            expect(typeof outputProps.onClick).to.equal('function');
+        });
+
+        it('should render an alert status item', () => {
+            expect(output.find(HealthMonitorStatusAlert)).to.have.length(1);
+        });
     });
 
-    it('should pass status the list item', () => {
-        let outputProps = output.find(HealthMonitorListItem).first().props();
-        expect(outputProps.count).to.equal(1);
-        expect(outputProps.status).to.equal('online');
-        expect(typeof outputProps.onClick).to.equal('function');
+    describe('has no statuses', () => {
+        beforeEach(() => {
+            output.setProps({
+                statuses: []
+            });
+        });
+
+        it('should render a no devices message when there are no status', () => {
+            expect(output.find(HealthMonitorListItem)).to.have.length(0);
+            expect(output.find(HealthMonitorEmptyItem)).to.have.length(1);
+        });
     });
 
-    it('should render an alert status item', () => {
-        expect(output.find(HealthMonitorStatusAlert)).to.have.length(1);
-    });
 });
