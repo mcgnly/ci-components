@@ -11,6 +11,7 @@ import Map from './map';
 import SmallMapWidget from './map/smallWidget';
 import SimpleRedirect from './simpleRedirect';
 import HealthMonitor from './healthMonitor';
+import Button from './button';
 
 const Components = {
     Radial,
@@ -36,30 +37,31 @@ export default function WidgetComponent(props) {
         return <div/>;
     }
     return (
-        <Component {...props} type={type} config={config} devices={devices} readings={readings} title={title}></Component>
+      <Button type='primary'/>
     );
 };
+        // <Component {...props} type={type} config={config} devices={devices} readings={readings} title={title}></Component>
 
 
-WidgetComponent.propTypes = {
-    type: PropTypes.string,
-    config: PropTypes.shape({
-       readings: PropTypes.arrayOf(
-           PropTypes.shape({
-                path: PropTypes.string,
-                meaning: PropTypes.string,
-                id: PropTypes.string,
-                valueSchema: PropTypes.object
-            })
-        )
-    }),
-    title: PropTypes.string,
-    results: PropTypes.arrayOf(
-       PropTypes.shape({
-           id: PropTypes.string,
-           owner: PropTypes.string,
-           name: PropTypes.string,
-           modelId: PropTypes.string
-       })
-   )
-};
+// WidgetComponent.propTypes = {
+//     type: PropTypes.string,
+//     config: PropTypes.shape({
+//        readings: PropTypes.arrayOf(
+//            PropTypes.shape({
+//                 path: PropTypes.string,
+//                 meaning: PropTypes.string,
+//                 id: PropTypes.string,
+//                 valueSchema: PropTypes.object
+//             })
+//         )
+//     }),
+//     title: PropTypes.string,
+//     results: PropTypes.arrayOf(
+//        PropTypes.shape({
+//            id: PropTypes.string,
+//            owner: PropTypes.string,
+//            name: PropTypes.string,
+//            modelId: PropTypes.string
+//        })
+//    )
+// };
